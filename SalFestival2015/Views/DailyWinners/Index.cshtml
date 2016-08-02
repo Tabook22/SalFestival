@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/_layoutAdmin.cshtml";
+    ViewBag.Title = "إختيار الفائزين";
+}
+@using (Html.BeginForm("addWinner", "DailyWinners", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+               إختيار المتسابقين الفائزين
+            </div>
+            <div class="panel-body">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="text" id="txtqno" name="txtqno" value="" class="form-control" />
+                    </div>
+                    <lable class="control-label col-md-2">رقم السؤال</lable>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="text" id="txtqans" name="txtqans" value="" class="form-control" />
+                    </div>
+                    <lable class="control-label col-md-2">الإيجابة</lable>
+                </div>
+
+                
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="إظهار الفائزين" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

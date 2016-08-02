@@ -1,0 +1,68 @@
+﻿@model SalFestival2015.Models.tbl_gust_Answers
+@{
+    
+    Layout = "";
+}
+
+
+@using (Html.BeginForm("AddDialyQuize", "Quize", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.g_name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.g_name, "", new { @class = "text-danger" })
+        </div>
+        <label class="control-label col-md-2">إسم المشارك</label>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.g_email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.g_email, "", new { @class = "text-danger" })
+        </div>
+        <label class="control-label col-md-2">البريد الإلكتروني</label>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.g_tel, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.g_tel, "", new { @class = "text-danger" })
+        </div>
+        <label class="control-label col-md-2">الهاتف</label>
+    </div>
+    <div class="form-group" style="display:none;">
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.q_no, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.q_no, "", new { @class = "text-danger" })
+        </div>
+        <label class="control-label col-md-2">السؤال</label>
+    </div>
+
+    <div class="form-group" style="display:none;">
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.q_ans , new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.q_ans , "", new { @class = "text-danger" })
+        </div>
+        <label class="control-label col-md-2">الإيجابة</label>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+
+            @*<input type="submit" id="sfrm" value="إرسال الإيجابة" class="btn btn-default" />*@
+        </div>
+    </div>
+                       
+}
+
+@*<input type="button" id="sfrm" value="إرسال الإيجابة" class="btn btn-default" />*@
+@*<a href='@Url.Action("Jquery", "Products", new { @categoryid = 1, @Productid = 2})'>
+
+    asdfasdfasdf
+</a>*@
+
+<a href='@Url.Action("AddDialyQuize2", "Quize", new { @date = "asdsdf", @name = "DDDD", @email = "Dddd", @tel = "sdfsd", @qans = "dddd", @qno = "ddd" })' class="btn btn-default">
+
+  أرسل الإيجابة
+</a>

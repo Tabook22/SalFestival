@@ -1,0 +1,11 @@
+﻿@model IEnumerable<SalFestival2015.Models.tbl_articles>
+@{
+    Layout = "";
+}
+
+@foreach (var item in Model)
+{
+   
+    <img class="advimg" src='@Url.Content(item.a_img)' />
+    
+}

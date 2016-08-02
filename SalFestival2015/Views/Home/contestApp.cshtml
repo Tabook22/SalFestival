@@ -1,0 +1,190 @@
+﻿@model SalFestival2015.Models.cstapp
+@{
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+<!-- Start of mainContainer -->
+<div class="row">
+    <div class="container">
+        <div class="app-title">
+            <h2>
+
+                مسـابقة مهـرجان صـلالة السياحي للرماية المفتـوحة
+                على مستوى الولايات والأندية والأفراد لعام 2016 م
+
+            </h2>
+        </div>
+        <div>
+            <h3 style="color:red">@TempData["msg"]</h3>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="app-con">
+                <div class="con-container">
+                    <h3>الاشتراطات والضوابط </h3>
+                    <ul>
+                        <li>
+                            <span>
+                                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+
+                                أن يحمـل مـا يثـبت هـويته الشخصيـة
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+
+                                أن يكون لديه المعرفة باستخدام السلاح
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+
+                                أن يكون لائـق صحيا وعقليا
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+
+                                أن يكون من أبناء مجلس التعاون
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+
+                                أن يكون منتخب من الولاية إذا كان ضمن فريق الصحون خطيا
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="con-container">
+                    <h3>أنواع المسابقات </h3>
+                    <ul>
+                        <li>
+                            <span>
+                                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                المسابقة الفردية العامة (16 سنة ) وما فوق من مواليد سنة 2001 م
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                المسابقة الفردية لكبار السن (60 سنة ) وما فوق من مواليد سنة 1956م
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                المسابقة الفردية للناشئين ( 8  سنوات إلى 15 سنة) من مواليد سنة 2002م
+                                إلي 2009م
+
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                مسابقة الصحون ( فرق)  4  أفراد مع واحد احتياط يكون من ضمن القائمة
+                            </span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="con-container">
+                    <h3>الاهداف</h3>
+                    <p>
+                        الهدف عبارة عن شريطين من الأهداف خمسة في الأعلى وخمسة في الأسفل وواحدة في المنتصف للتجربة, و كل هدف طلقه واحدة فقط ماعدا هدف التجربة, والوقت 15 دقيقة للتجربة والمسابقة معا ويسمح بالتلسكوب لروية الهدف
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="con-container">
+                <div class="form-container">
+                    @*@using (Html.BeginForm("addcont","Home", FormMethod.Post))
+                    {*@
+                        <div class="form-group">
+                            <label for="name">الإسم</label>
+                            @*@Html.TextBoxFor(x=>x.Name, new { htmlAttributes = new { @class = "form-control" }, placeholder = "الاسم  الثلاثي مع القبيلة" })*@
+                            <input type="text" class="form-control" id="name" placeholder="الاسم  الثلاثي مع القبيلة">
+                        </div>
+                        <div class="form-group">
+                            <label for="idno">الرقم المدني</label>
+                            @*@Html.TextBoxFor(x => x.IdNo, new { htmlAttributes = new { @class = "form-control" }, placeholder = "الرقم المدني" })*@
+                            <input type="text" class="form-control" id="idno" placeholder="الرقم المدني">
+                        </div>
+                        <div class="form-group">
+                            <label for="state">المحافظة</label>
+                            @*@Html.TextBoxFor(x => x.State, new { htmlAttributes = new { @class = "form-control" }, placeholder = "إسم المحافظة" })*@
+                            <input type="text" class="form-control" id="state" placeholder="إسم المحافظة">
+                        </div>
+                        <div class="form-group">
+                            <label for="tel">الهاتف</label>
+                            @*@Html.TextBoxFor(x => x.Tel, new { htmlAttributes = new { @class = "form-control" }, placeholder = "رقم الهاتف" })*@
+                            <input type="text" class="form-control" id="tel" placeholder="رقم الهاتف">
+                        </div>
+                        <h3>نوع المسابقة</h3>
+                        <div class="checkbox">
+                          @Html.RadioButton("Contest", "العامة") <text>العامة </text><br/>
+                        @Html.RadioButton("Contest", "كبار السن") <text>كبار السن </text><br />
+                        @Html.RadioButton("Contest", "الناشئين") <text>الناشئين </text><br />
+
+                        <a href="#" id="sfrm" class="btn btn-danger">إرسال طلب الإشتراك</a>
+</div>
+                    @*}*@
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<script>
+    $(function () {
+        $('#sfrm').on("click", function (e) {
+            e.preventDefault();
+            var fullDate = new Date();
+            //convert month to 2 digits
+            var twoDigitMonth = ((fullDate.getMonth().length + 1) === 1) ? (fullDate.getMonth() + 1) : '0' + (fullDate.getMonth() + 1);
+            var mdate = fullDate.getDate() + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
+            var name = $("#name").val();
+            var idno = $("#idno").val();
+            var state = $("#state").val();
+            var tel = $("#tel").val();
+            var contest = $("input:radio[name='Contest']:checked").val();
+
+            if (!$("input:radio[name='Contest']:checked").val()) {
+                alert('الرجاء إختار المسابقة');
+            }
+            else {
+                var contest = $("input:radio[name='Contest']:checked").val(); // get the value of the checked radiobutton, from the radiobutton group "rbGrp"
+
+                var url = '@Url.Action("AddcontApp", "Home")' + 'name=' + name + '&idno=' + idno + '&state=' + state + '&tel=' + tel + '&contest=' + contest;
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: '',
+                    dataType: 'html',
+                    complete: function (xmlHttp) {
+                        // xmlHttp is a XMLHttpRquest object
+                        if (xmlHttp.code != 200) {
+                          
+                            top.location.href = 'http://altersanah.com/ConApps/AddContest/?name=' + name + "&idno=" + idno + "&state=" + state + "&tel=" + tel + "&contest=" + contest;
+                        }
+                    }
+
+                });
+            }
+          //$.get('@Url.Action("AddcontApp", "Home")', { date: mdate, name: name, idno:idno,state:state, tel:tel, contest:contest}, function (data) {
+               // Populate your "rData" element with the results
+               // $("#rData").html(data);
+            });
+
+            //$.ajax({ url: 'AddcontApp?date=' + mdate + "&name=" + name + "&idno=" + idno + "&state=" + state + "&tel=" + tel + "&contest=" + contest });
+       // });
+    });
+</script>

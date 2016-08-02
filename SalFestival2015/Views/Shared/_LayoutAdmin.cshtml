@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="ar-om" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/adminStyles/Adminstyles.css" rel="stylesheet" />
+    <link href="~/Content/css/adminStyles/digitalclock.css" rel="stylesheet" />
+    <link href="~/Content/css/adminStyles/flexslider.css" rel="stylesheet" />
+    <link href="~/Content/css/adminStyles/font-style.css" rel="stylesheet" />
+    <link href="~/Content/css/adminStyles/main.css" rel="stylesheet" />
+    <link href="~/Content/css/polyfill.object-fit.css" rel="stylesheet" /> <!-- this will be used to fix the image aspect ratio-->
+
+
+    <link href="~/Content/fontawesome/font-awesome.min.css" rel="stylesheet" />
+
+
+    @RenderSection("myStyle", false)
+
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+    <!-- TinyMCE Script Reference -->
+    <script src="~/scripts/tinymce/tinymce.min.js"></script>
+    <!-- Script to wire up your TinyMCE editor -->
+    <script type="text/javascript">
+        // Initialize your tinyMCE Editor with your preferred options
+        tinyMCE.init({
+            // General options
+            mode: "specific_textareas",
+            editor_selector: "postcontent",
+            theme: "modern",
+            menubar: false,
+            height: "500",
+            width: "790",
+            directionality: "rtl",
+            plugins: [
+              "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+              "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+              "save table contextmenu directionality emoticons template paste textcolor"
+            ],
+
+            // Theme options
+            theme_advanced_buttons1: "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+            theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+            theme_advanced_buttons3: "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+            theme_advanced_buttons4: "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
+            theme_advanced_toolbar_location: "top",
+            theme_advanced_toolbar_align: "left",
+            theme_advanced_statusbar_location: "bottom",
+            theme_advanced_resizing: true,
+
+            content_css: "css/content.css",
+            //toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+            //style_formats: [
+            //     { title: 'Bold text', inline: 'b' },
+            //     { title: 'Red text', inline: 'span', styles: { color: '#ff0000' } },
+            //     { title: 'Red header', block: 'h1', styles: { color: '#ff0000' } },
+            //     { title: 'Example 1', inline: 'span', classes: 'example1' },
+            //     { title: 'Example 2', inline: 'span', classes: 'example2' },
+            //     { title: 'Table styles' },
+            //     { title: 'Table row 1', selector: 'tr', classes: 'tablerow1' }
+            //]
+
+        });
+
+        tinyMCE.init({
+            // General options
+            mode: "specific_textareas",
+            editor_selector: "pstsummary",
+            theme: "modern",
+            menubar: false,
+            height: "200",
+            width: "790",
+            // Theme options
+            theme_advanced_buttons1: "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+            theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+            theme_advanced_buttons3: "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+            theme_advanced_buttons4: "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
+            theme_advanced_toolbar_location: "top",
+            theme_advanced_toolbar_align: "left",
+            theme_advanced_statusbar_location: "bottom",
+            theme_advanced_resizing: true,
+
+            // Example content CSS (should be your site CSS)
+            content_css: "css/example.css",
+
+        });
+    </script>
+
+    <!----start-top-nav-script---->
+    <script>
+        $(function () {
+            var pull = $('#pull');
+            menu = $('.top-nav ul');
+            menuHeight = menu.height();
+            $(pull).on('click', function (e) {
+                e.preventDefault();
+                menu.slideToggle();
+            });
+            $(window).resize(function () {
+                var w = $(window).width();
+                if (w > 320 && menu.is(':hidden')) {
+                    menu.removeAttr('style');
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+    @{Html.RenderPartial("_Header");}
+    <div class="container body-content">
+        @RenderBody()
+        @*<hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+    </div>
+    <div id="footerwrap">
+        <footer class="clearfix"></footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-lg-12">
+                    <p><img src='@Url.Content("~/Content/images/golden1.png")' width="109" alt=""></p>
+                    <p>Golden Events - Copyright 2015</p>
+                </div>
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </div><!-- /footerwrap -->
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- here we using object-fit to fix the image aspect ratio-->
+    <script src="~/Content/js/polyfill.object-fit.min.js"></script>
+
+    <script>
+    objectFit.polyfill({
+        selector: 'img', // this can be any CSS selector
+        fittype: 'cover', // either contain, cover, fill or none
+        disableCrossDomain: 'true' // either 'true' or 'false' to not parse external CSS files.
+    });
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

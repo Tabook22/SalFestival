@@ -1,0 +1,115 @@
+﻿@model SalFestival2015.Models.tbl_articles
+@{
+
+    ViewBag.Title = "ArticleSettings";
+}
+
+@*<h2>تعديل مقالات و أخبار الموقع</h2>*@
+@*<small>تعديل المقالات و الأخبار و تحديد أماكن هذه المقالات داخل الصفحة الرئيسية</small>*@
+
+
+@using (Html.BeginForm("upArticleSettings", "SiteSettings", FormMethod.Post, new { id = "frmarticles" }))
+{
+    @Html.HiddenFor(model => model.Id)
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.a_title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.a_title, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(x => x.a_title, htmlAttributes: new { @class = "control-label col-md-2" })
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @*@Html.TextBoxFor(x => x.a_img, new { @id = "a_img", @onchange = "onchangeevent();" })*@
+                @Html.TextBoxFor(x => x.a_img, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.a_img, "", new { @class = "text-danger" })
+                <img id="myimg" src="" alt="" class="img-responsive" style="padding:5px;margin:5px;border:1px solid #eee;" />
+            </div>
+            @Html.LabelFor(x => x.a_img, htmlAttributes: new { @class = "control-label col-md-2" })
+
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.a_link, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.a_link, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(x => x.a_link, new { @class = "control-label col-md-2" })
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @*@Html.TextAreaFor(x => x.a_desc, 4, 63, new { @class = "form-control" })*@
+                @Html.TextAreaFor(x => x.a_desc, new { @class = "form-control postexcerpt", style = "width: 460px", rows = "6", cols = "60" })
+                @*@Html.TextAreaFor(x => x.a_desc, new { @title = "form-control" })*@
+                @Html.ValidationMessageFor(x => x.a_desc, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(x => x.a_desc, new { @class = "control-label col-md-2" })
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @*@Html.DropDownList("mylist" , ViewBag.mysections as SelectList, "إختار الموقع ...", new { @class = "form-contorl" })*@
+                @Html.DropDownList("mysections", "[Select]")
+                @*@Html.DropDownListFor(model => model.a_loc, new SelectList(ViewBag.mysections, "a_loc", "sec_title"))*@
+                @*@Html.DropDownList("sections", "Select")*@
+                @*@Html.DropDownList("myloc", ViewBag.sections as SelectList, "إختار الموقع / القسم", new { @class = "form-control" })*@
+                @*@Html.TextBoxFor(x => x.a_loc, new { @class = "form-control" })*@
+            </div>
+            @Html.LabelFor(x => x.a_loc, new { @class = "control-label col-md-2" })
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.a_order, new { @class = "form-control" })
+            </div>
+            @Html.LabelFor(x => x.a_order, new { @class = "control-label col-md-2" })
+
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.a_status, new List<SelectListItem>()
+                        {  new SelectListItem() { Text= "نشطة", Value = "1", Selected =true },
+                         new SelectListItem() { Text= "مسودة", Value = "0" }
+                        }, "  -----إختار حالة المقالة-----  ")
+                @Html.ValidationMessageFor(model => model.a_status, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(x => x.a_status, new { @class = "control-label col-md-2" })
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+
+                <input type="submit" value="حفظ التعديلات " class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Content/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var gimg = $("#a_img").val();
+        $("#myimg").attr("src", gimg);
+        $("#a_img").on("change", function () {
+            var getimg = $(this).val();
+            $("#myimg").attr("src", getimg);
+        });
+
+    });
+</script>
+
+@*<script type="text/javascript">
+        $.ajax({
+            url: '/Admin/SiteSettings/ArticleSettings',
+            contentType: 'application/html; charset=utf-8',
+            data: { imgfolder: fld },
+            type: 'GET',
+            dataType: 'html'
+
+        })
+                   .success(function (result) {
+                       $('#imgdetails').html(result);
+                   })
+                   .error(function (xhr, status) {
+                       alert(status);
+                   })
+    </script>*@
+

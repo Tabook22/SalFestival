@@ -1,0 +1,63 @@
+﻿@model SalFestival2015.Models.tbl_siteSections
+
+@{
+
+    ViewBag.Title = "createSiteSec";
+}
+<div id="panelEdit" class="panel">
+    @*<div class="panel-heading"></div>*@
+    <div class="panerl-body">
+        @using (Html.BeginForm("editSectionToDatabase", "SiteSettings", FormMethod.Post, new { id = "frmSiteSec2" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <h2 style="padding:5px;">تعديل أقسام الموقع</h2>
+                <small style="padding:5px;">ملاحظة: الموقع مقسم إلى عدة أقسام حسب المواضيع المعروضة</small>
+                @Html.HiddenFor(model => model.secId)
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group" style="padding:5px;">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.sec_title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.sec_title, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.sec_title, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="form-group" style="padding:5px;">
+                    <div class="col-md-10">
+                        @Html.DropDownList("mysections", "[Select]")
+                    </div>
+                    @Html.LabelFor(model => model.sec_lock, htmlAttributes: new { @class = "control-label col-md-2" })
+                  
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(x => x.sec_desc, new { @title = "form-control", style="height:100px;"})
+                        @*@Html.TextBoxFor(x => x.a_desc, new { @class = "form-control" })*@
+                        @Html.ValidationMessageFor(x => x.sec_desc, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(x => x.sec_desc, new { @class = "control-label col-md-2" })
+                    
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.sec_status, new List<SelectListItem>()
+                        {  new SelectListItem() { Text= "نشطة", Value = "1", Selected =true },
+                         new SelectListItem() { Text= "مسودة", Value = "0" }
+                        }, "  -----إختار حالة القسم-----  ")
+                        @Html.ValidationMessageFor(model => model.sec_status, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(x => x.sec_status, new { @class = "control-label col-md-2" })
+                    
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input id="frmsubmit2" type="submit" value="إضافة التعديلات" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

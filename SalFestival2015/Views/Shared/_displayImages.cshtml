@@ -1,0 +1,143 @@
+﻿@{
+    Layout = "";
+}
+
+@model IEnumerable<SalFestival2015.Models.tbl_images1>
+<style>
+    .dimg {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+        .dimg li {
+            display: inline-block;
+            padding: 5px;
+            background-color: #eee;
+            margin: 10px;
+        }
+    /*.dimg img{width:200px;}*/
+    /*.dimg p{width:200px;}*/
+    ul.dimg img {
+        width: 150px;
+        height: 100px;
+        /*object-fit: cover;*/
+        object-fit: contain;
+        overflow: hidden;
+        object-position: 25% 50%;
+        transition: 1s all;
+    }
+
+        ul.dimg img:hover, ul.dimg img:focus {
+            height: 300px;
+            width: 300px;
+        }
+
+    .button1 {
+        background: url(/Content/images/delete.png) no-repeat;
+        cursor: pointer;
+        border: none;
+        width: 24px;
+        height: 24px;
+        box-sizing: content-box;
+    }
+
+    .button2 {
+        background: url(/Content/images/edit.png) no-repeat;
+        cursor: pointer;
+        border: none;
+        width: 24px;
+        height: 24px;
+        padding-right: 50%;
+        box-sizing: content-box;
+    }
+</style>
+
+<div>
+    <ul class="dimg">
+        @foreach (var item in Model)
+        {
+            <li>
+
+                <img src="@item.imgfullurl" class="img-responsive thumbnail img-thumbnail" />
+                <p>
+                    @*@item.imgtitle*@
+                </p>
+                <input id="btnDelImg" name="btnDelImg" type="button" value="" data-folder=@item.imgfolder data-imgurl=@item.imgfullurl class="button1" />
+                <input id="btnEdiImg" name="btnEdiImg" type="button" value="" data-folder=@item.imgfolder data-imgurl=@item.imgfullurl data-toggle="modal" data-target="#myModal" class="button2" />
+                @*@Html.ActionLink("حذف الصورة", "DeleteImages", "ImageUpload", new { imgurl = item.imgfullurl, imgfolder = item.imgfolder },new{@class="btn btn-dnager",@id="btnDel", @data_folder=item.imgfolder})*@
+            </li>
+        }
+    </ul>
+</div>
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">تعديل الصورة</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="eidtimgdetails">
+
+                </div>
+
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>*@
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--**************************************************************************************************************************************-->
+<script src="~/Scripts/jquery-2.1.3.min.js"></script>
+<script type='text/javascript'>
+    $(function () {
+        $(document).on('click', '#btnDelImg', function (e) {
+            $('#imgdetails').empty();
+            var fld = $(this).data("folder");
+            var murl = $(this).data("imgurl");
+            $.ajax({
+                url: '/ImageUpload/DeleteImages',
+                contentType: 'application/html; charset=utf-8',
+                data: { imgurl: murl, imgfolder: fld },
+                type: 'GET',
+                dataType: 'html'
+            })
+            .success(function (result) {
+                $('#imgdetails').html(result);
+            })
+            .error(function (xhr, status) {
+                alert(status);
+            })
+            e.preventDefault();
+        });
+
+
+        // edit
+        $(document).on('click', '#btnEdiImg', function (e) {
+            $('#eidtimgdetails').empty();
+            var fld = $(this).data("folder");
+            var murl = $(this).data("imgurl");
+            $.ajax({
+                url: '/ImageUpload/EditImages',
+                contentType: 'application/html; charset=utf-8',
+                data: { imgurl: murl, imgfolder: fld },
+                type: 'GET',
+                dataType: 'html'
+            })
+            .success(function (result) {
+                $('#eidtimgdetails').html(result);
+            })
+            .error(function (xhr, status) {
+                alert(status);
+            })
+            e.preventDefault();
+        });
+    });
+
+
+</script>

@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "مهرجان صلالة السياحي 2015";
+}
+<link href="~/Content/css/style2.css" rel="stylesheet" />
+
+
+<div class="m3">
+    <div class="">
+        <div class="row row-margin-bottom">
+            <div class="hidden-xs hidden-sm col-sm-12 col-md-6">
+                @{Html.RenderAction("gettopAdv");}
+            </div>
+            <div class="col-sm-12 col-md-6">
+                @{Html.RenderAction("dailyevents");}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="m4">
+    @{Html.RenderAction("getMainArt", "Home");}
+</div>
+<div class="m2">
+    @{Html.RenderAction("DArticles", "Home");}
+</div>
+

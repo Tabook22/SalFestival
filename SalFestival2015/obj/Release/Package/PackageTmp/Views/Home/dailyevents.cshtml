@@ -1,0 +1,80 @@
+﻿@model IEnumerable<SalFestival2015.Models.tbl_articles>
+@{
+    Layout = "";
+}
+
+<style>
+    .box-shadow {
+        height: 292px;
+    }
+
+    .devt {
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+    .box-shadow ul.lstevent {
+        list-style: none;
+        width: 90%;
+    }
+
+        .box-shadow ul.lstevent li {
+            border-bottom: 1px solid #ccc;
+            padding: 5px;
+        }
+
+            .box-shadow ul.lstevent li:last-child {
+                border-bottom: none;
+            }
+</style>
+@*<div class="col-md-6 lib-item" data-category="ui">
+        <div class="lib-panel">
+            <div class="row box-shadow">
+               <div class="col-md-6">
+                    <img class="lib-img-show" src='@url.content(item.a_img)'>
+                </div>
+                <div class="col-md-12">
+                    <div class="lib-row lib-header">
+                        @item.a_title
+                        <div class="lib-header-seperator"></div>
+                    </div>
+                    <div class="lib-row lib-desc">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+<div class="col-md-5 lib-item" data-category="ui">
+    <div class="lib-panel">
+        <div class="row box-shadow devt">
+            <div class="col-md-12">
+                <h3>جدول الفعاليات اليومية</h3>
+                <ul class="lstevent">
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            <i class="fa fa-angle-double-left"></i>
+                            @*<a href='@Url.Action("getArtDetails", "Articles", new {id=@item.Id})'>
+                                    @item.a_title<
+                                </a>*@
+
+                            <a href='@item.a_link'>
+                                @item.a_title
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="eventtable">
+            <a href='@Url.Content("~/uploads/festival2015.pdf")'><i class="fa fa-download"></i>
+
+                البرنامج العام لمهرجان صلالة السياحي 2015
+            </a>
+        </div>
+    </div>
+</div>

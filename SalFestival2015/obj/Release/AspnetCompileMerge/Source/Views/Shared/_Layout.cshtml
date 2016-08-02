@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="ar-om" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - مهرجان صلالة السياحي</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/myCSS")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script>
+    function showhide()
+    {
+    	var div = document.getElementById("newpost");
+		if (div.style.display !== "none")
+		{
+			div.style.display = "none";
+		}
+		else {
+			div.style.display = "block";
+		}
+    }
+    </script>
+    <meta name="description" content="The description of my page" />
+</head>
+<body>
+    
+    <div class="container body-content">
+        <div class="site-header">
+             <!-- /.main-navigation -->
+        </div> <!-- /.site-header -->
+        <div id="menu-container">
+            @RenderBody()
+            <!-- team start -->
+           
+        </div>
+        <!-- contact end -->
+        <!-- footer start -->
+        <div class="templatemo_footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 col-sm-12">Copyright &copy; 2015 مهرجان صلالة السياحي</div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- footer end -->   
+
+
+        <!-- *******************************************************************************************************************  -->
+       
+        @*<hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - مهرجان صلالة السياحي</p>
+        </footer>*@
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/myJS")
+
+    <script>
+    $('.gallery_more').click(function () {
+        var $this = $(this);
+        $this.toggleClass('gallery_more');
+        if ($this.hasClass('gallery_more')) {
+            $this.text('Load More');
+        } else {
+            $this.text('Load Less');
+        }
+    });
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

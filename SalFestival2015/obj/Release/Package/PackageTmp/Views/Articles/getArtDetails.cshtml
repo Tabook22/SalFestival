@@ -1,0 +1,19 @@
+﻿@model SalFestival2015.Models.tbl_articles
+
+@{
+    ViewBag.Title = "تفاصيل المقالة / الخبر";
+}
+
+<div class="row">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="artimg">
+                <h2>@Model.a_title</h2>
+                <img src='@Model.a_img' alt='@Model.a_title'>
+            </div>
+            <div class="artdesc">
+                @Model.a_desc
+            </div>
+        </div>
+    </div>
+</div>

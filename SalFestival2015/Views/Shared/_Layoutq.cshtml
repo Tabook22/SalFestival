@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="ar-om" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - مهرجان صلالة السياحي</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/templatemo_misc.css" rel="stylesheet" />
+    <link href="~/Content/css/templatemo_style.css" rel="stylesheet" />
+
+    <link href="~/Content/css/mainarticles2.css" rel="stylesheet" />
+    <link href="~/Content/css/sidemenu2.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        ul.advlst {
+            list-style: none;
+        }
+
+            ul.advlst li {
+                padding: 5px;
+                margin-bottom: 20px;
+            }
+
+                ul.advlst li img {
+                    width: 200px;
+                    height: 100%;
+                }
+    </style>
+
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/tinymce/tiny_mce.js"></script>
+
+</head>
+<body>
+
+    @*<div class="container body-content">*@
+
+    <div class="site-header navbar-fixed-top">
+        <div class="main-navigation">
+            <div class="responsive_menu">
+                <ul>
+                    <li><a class="show-1 templatemo_home" href="http://www.salalahfestival.gov.om/Home/Index">الرئيسية</a></li>
+                    <li><a class="show-2 templatemo_page2" href="http://www.salalahfestival.gov.om/Home/getImgGal">معرض الصور</a></li>
+                    <li><a class="show-3 templatemo_page3" href="https://docs.google.com/forms/d/1llIwYpyI_IQORkXEMyMawzwQgZTZMX75occg_8N6KRs/viewform?c=0&w=1"> إستبيان المهرجان</a></li>
+                    <li><a class="show-5 templatemo_page5" href="http://livestream.com/3dmaxmedia/events/4214535">العرض المباشر</a></li>
+                </ul>
+            </div>
+            <div class="container">
+                <div class="row templatemo_gallerygap">
+                    <div class="col-md-12 responsive-menu">
+                        <a href="#" class="menu-toggle-btn">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div> <!-- /.col-md-12 -->
+                    <div class="col-md-10 main_menu">
+                        <ul>
+                            <li>
+                                <a class="show-1 templatemo_home" href="http://www.salalahfestival.gov.om/Home/Index">
+                                    <span class="fa fa-home"></span>
+
+                                    الرئيسية
+                                </a>
+                            </li>
+                            <li>
+                                <a class="show-2 templatemo_page2" href="http://www.salalahfestival.gov.om/Home/getImgGal">
+                                    <span class="fa fa-camera"></span>
+                                    معرض الصور
+                                </a>
+                            </li>
+                            <li>
+                                <a class="show-3 templatemo_page3" href="https://docs.google.com/forms/d/1llIwYpyI_IQORkXEMyMawzwQgZTZMX75occg_8N6KRs/viewform?c=0&w=1">
+                                    <span class="fa fa-cogs"></span>
+                                    إستبيان المهرجان
+                                </a>
+                            </li>
+                            <li>
+                                <a class="show-5 templatemo_page5" href="http://livestream.com/3dmaxmedia/events/4214535">
+                                    <span class="fa fa-video-camera">
+
+                                    </span>
+                                    العرض المباشر
+                                </a>
+                            </li>
+                        </ul>
+                        <img id="sitetitle" src="~/Content/images/sitetitle2.png" class="img-responsive" />
+                    </div> <!-- /.col-md-12 -->
+                    <div id="siteimg" class="col-md-2 col-sm-12" style="text-align:right;">
+                        <a href="#">
+                            <img class="slogo" src="~/Content/images/logo.png" style="width:80px;" alt="Polygon HTML5 Template">
+                        </a>
+                    </div>
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.main-navigation -->
+    </div> <!-- /.site-header -->
+    <div id="menu-container" class="wrapper">
+
+        @RenderBody()
+
+
+    </div>
+    <!-- footer start -->
+    <div class="templatemo_footer footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-12">Copyright &copy; 2015 مهرجان صلالة السياحي</div>
+                <div class="col-md-3 col-sm-12 templatemo_rfooter">
+
+                    <a href="http://www.facebook.com/DhofarMunicipality">
+                        <div class="hex_footer">
+                            <span class="fa fa-facebook"></span>
+                        </div>
+                    </a>
+                    <a href="https://twitter.com/DhofarMun">
+                        <div class="hex_footer">
+                            <span class="fa fa-twitter"></span>
+                        </div>
+                    </a>
+                    <a href="http://www.youtube.com/DhofarMunicipality">
+                        <div class="hex_footer">
+                            <span class="fa fa-youtube"></span>
+                        </div>
+                    </a>
+                    <a href="mailto:webteam@dm.gov.om">
+                        <div class="hex_footer">
+                            <span class="fa fa-envelope-o"></span>
+                        </div>
+                    </a>
+                    <a href="http://www.instagram.com/Dhofar_Municipality">
+                        <div class="hex_footer">
+                            <span class="fa fa-instagram"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer end -->
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/respond.js"></script>
+    <script src="~/Content/js/jquery.lightbox.js"></script>
+
+    <script src="~/Content/js/templatemo_custom.js"></script>
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @*@Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/myJS")*@
+
+
+    <!-- photo gallery-->
+    <script>
+        $('.gallery_more').click(function () {
+            var $this = $(this);
+            $this.toggleClass('gallery_more');
+            if ($this.hasClass('gallery_more')) {
+                $this.text('▼المزيد');
+            } else {
+                $this.text('▲ أعلى');
+            }
+        });
+    </script>
+
+    <!--side menu-->
+    <script>
+        $(document).ready(function () {
+            $(".sidemenu-bar").toggleClass("open");
+            $(".menu-button").click(function () {
+                $(".sidemenu-bar").toggleClass("open");
+            })
+        })
+    </script>
+    <script src="~/Content/js/script.js"></script>
+
+
+    <!-- sponsers-->
+    <script type="text/javascript">
+        $(window).load(function () {
+            $("#flexiselDemo1").flexisel({
+                visibleItems: 9,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed: 3000,
+                pauseOnHover: true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 3
+                    }
+                }
+            });
+
+        });
+    </script>
+
+    <script src="~/Content/js/jquery.flexisel.js"></script>
+    <script src="~/Content/js/maincontents.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

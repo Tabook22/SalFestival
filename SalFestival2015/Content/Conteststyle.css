@@ -1,0 +1,95 @@
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html {
+  font-size: 100%; }
+
+body {
+  background-color: #F2F1ED;
+  color: #333; font-weight:bold;}
+
+h1, h2 {
+  color: #333333; }
+
+h3 {
+  color: #D66360; }
+
+h1 {
+  font-size: 1.5rem; }
+
+h2 {
+  font-size: 1.375rem; }
+
+h3 {
+  font-size: 1.125rem; 
+  border-bottom:2px solid #D66360;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+
+.app-title{
+    padding:10px;
+    text-align:center;
+}
+.con-container {
+  padding: 5px;
+  border: 1px solid #AFA8A2;
+  border-radius: 5px;
+  margin: 10px;
+  background-color: #F9F9F7; }
+
+i {color:#D66360;}
+.checkbox label, .radio label {
+
+    padding-right: 20px;
+}
+.checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"], .radio input[type="radio"], .radio-inline input[type="radio"] {
+    margin-right: -20px;
+    position: absolute;
+}
+@media (min-width: 320px) {
+  #app-header {
+    height: 110px;
+    position: relative;
+    border-bottom: 1px solid #AFA8A2;
+    padding: 5px; }
+  
+  #app-header .logo {
+    position: absolute;
+    left: 50%;
+    width: 120px;
+    margin-left: -60px;
+    text-align: center; }
+
+  #app-header .logo img {
+    height: 100px; } 
+
+}
+@media (min-width: 768px)  {
+  #app-header {
+    height: 110px;
+    position: relative;
+    border-bottom: 1px solid #AFA8A2;
+    padding: 5px; }
+  h2{
+      max-width:80%;
+      font-weight:bold;
+
+  }
+  #app-header .logo {
+    position: absolute;
+    left: 50%;
+    width: 120px;
+    margin-left: -60px;
+    text-align: center; }
+
+  #app-header .logo img {
+    height: 100px; } }
+
+/*# sourceMappingURL=style.css.map */

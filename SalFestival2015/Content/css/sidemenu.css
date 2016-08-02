@@ -1,0 +1,188 @@
+@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css");
+.sidemenu, .sidemenu-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background: #f7f7f7;
+    z-index:10001;  
+    overflow:hidden;
+    box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
+}
+.sidemenu li a{
+  display: block;
+  text-indent: -500em;
+  height: 5em;
+  width: 5em;
+  line-height: 5em;
+  text-align:center;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background 0.1s ease-in-out;
+}
+.sidemenu li a:before {
+  font-family: FontAwesome;
+  speak: none;
+  text-indent: 0em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1.4em;
+}
+.sidemenu li a.search:before {
+  content: "\f0e0";
+}
+.sidemenu li a.archive:before {
+  content: "\f09a";
+}
+.sidemenu li a.pencil:before {
+  content: "\f081";
+}
+.sidemenu li a.contact:before {
+  content: "\f082";
+}
+.sidemenu li a.about:before {
+  content: "\f16d";
+}
+.sidemenu li a.home:before {
+  content: "\f03a";
+}
+.sidemenu-bar ul{
+list-style:none;
+margin:0;
+padding:0px;
+}
+.sidemenu-bar li a:hover,
+.sidemenu li a:hover,
+.sidemenu li:first-child a {
+
+  color: #fff;border-bottom: none;
+}
+.sidemenu-bar li{
+ height:238px;
+    //background: rgb(52,53,54);
+background:rgb(247,247,247)
+}
+.sidemenu-bar{
+    overflow:hidden;
+    left: 0;
+    z-index:5;
+    width:0;
+    height:0;
+    transition: all 0.1s ease-in-out;
+    z-index:1; 
+}
+
+.sidemenu-bar li a{
+  display: block;
+
+  /* text-align:center; */
+  color: #72739f;
+  text-decoration:none;  
+  position: relative;
+  font-family:verdana;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background 0.1s ease-in-out;
+
+}
+.sidemenu-bar li:first-child a{
+    height:5em;
+  
+    color: #fff;    
+    line-height:5;
+    border-bottom:none;
+}
+
+
+.para{
+    color:#033f72;
+    padding-left:100px;
+    font-size:3em;
+    margin-bottom:20px;
+}
+
+.open{
+    width:15em;
+    height:100%;
+    margin-top:100px;
+z-index:100001
+}
+img.advc{padding:5px 10px;}
+
+
+@media all and (max-width: 500px) {
+    /*.container{margin-top:100px;}*/
+      /*.container{margin-top:100px;}*/
+.sidemenu-bar ul li{display:inline;}
+.sidemenu-bar ul li a{
+color:#888;
+}
+.sidemenu-bar ul li a:hover{
+color:#222;
+}
+.sidemenu-bar ul li a img{
+display:none !important;
+}
+.sidemenu-bar ul li a span{
+font-weight:bold;
+font-size:2.5rem;
+}
+    .sidemenu{
+        height:5em;
+        width:100%;
+    }
+    .sidemenu li{
+        display:inline-block;
+        float:left;
+    }
+    .sidemenu-bar li a{
+        width:100%;
+    }
+    .sidemenu-bar{
+        width:100%;
+        left:0;
+        height:0;
+    }
+    .open{
+        width:100%;
+        height:auto;
+          margin-top:50px;
+    }
+    .para{
+    padding-left:5px;
+}  
+}
+@media screen and (max-height: 34em){
+     
+  .sidemenu li,
+  .sidemenu-bar {
+    font-size:70%;
+  }
+
+}
+@media screen and (max-height: 34em) and (max-width: 500px){
+     
+  .sidemenu{
+        height:3.5em;
+    }
+     
+}
+
+@media all and (max-width: 1000px) {
+    /*.container{margin-top:100px;}*/
+    .sidemenu-bar {
+        display: none !important;
+    }
+}
+/*this is optional, i did it because i don't want it to appear on screens less than 1000px*/
+
+@media (min-height:1000px){
+      .siteAdv{display:none !important;}
+    .sidemenu{display:none;}
+ 
+}

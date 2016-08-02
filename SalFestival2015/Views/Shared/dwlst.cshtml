@@ -1,0 +1,61 @@
+﻿@model IEnumerable<SalFestival2015.Models.tbl_gust_Answers>
+
+@{
+    Layout = "~/Views/Shared/_layoutAdmin.cshtml";
+    ViewBag.Title = "قائمة الفائزين";
+}
+>
+<style>
+    ul.pstlst {
+        list-style: none;
+    }
+
+        ul.pstlst li {
+            padding: 5px 0;
+        }
+
+    .spg {
+        width: 600px;
+    }
+
+    span.psttitle {
+        display: inline-block;
+        border-bottom: 1px solid #ccc;
+        width: 80%;
+    }
+
+    .qesno {
+        position: absolute;
+        background-color: #9B0707;
+        right: -50px;
+    }
+</style>
+
+<h2>مسابقة الموقع اليومية</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-horizontal">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                       @ViewBag.Q1 أسماء الثلاثة الفائزين بالسؤال رقم 
+                    </div>
+                    <div class="panel-body">
+                        <ul class="pstlst">
+                            @foreach (var item in ViewBag.getUsers)
+                            {
+                                <li style="position:relative;">
+                                    <span class="badge qesno">@item.q_no</span>
+                                    <span class="psttitle">
+                                        @item.g_name
+                                        </span>
+</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

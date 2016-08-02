@@ -1,0 +1,67 @@
+﻿@model SalFestival2015.Models.tbl_winners
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_winners</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.g_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.g_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.g_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.g_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.g_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.g_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.g_tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.g_tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.q_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.q_no)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.q_ans)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.q_ans)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

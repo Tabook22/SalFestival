@@ -1,0 +1,168 @@
+﻿@model SalFestival2015.Models.tbl_quize
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    #pimg {
+        position: absolute;
+        float: left;
+        max-height: 190px;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+        content: "";
+        display: table;
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+
+    .clearfix {
+        zoom: 1; /* ie 6/7 */
+    }
+
+    /*.clearfix:after {
+       content: ".";
+       visibility: hidden;
+       display: block;
+       height: 0;
+       clear: both;
+    }*/
+</style>
+<h2>مسابقة الموقع</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-horizontal">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        إضافة سؤال جديد
+                    </div>
+                    <div class="panel-body">
+                        <div>
+                            <h4>
+                                @Html.ActionLink("عودة للقائمة", "Index")
+                            </h4>
+
+                        </div>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.q_no, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.q_no, "", new { @class = "text-danger" })
+                                </div>
+                                <label class="control-label col-md-2">رقم السؤال</label>
+                            </div>
+
+                            <label class="control-label col-md-2"></label>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.q_question, new { @class = "form-control pstcontent", style = "width: 900px", rows = "6", cols = "60" })
+                                    @*@Html.EditorFor(model => model.post_content, new { htmlAttributes = new { @class = "form-control pstcontent" } })*@
+                                    @Html.ValidationMessageFor(model => model.q_question, "", new { @class = "text-danger" })
+                                </div>
+                                <label class="control-label col-md-2">السؤال</label>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.q_ans1, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.q_ans1, "", new { @class = "text-danger" })
+                                </div>
+                                <label class="control-label col-md-2">الإيجابة رقم 1</label>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.q_ans2, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.q_ans2, "", new { @class = "text-danger" })
+                                </div>
+                                <label class="control-label col-md-2">الإيجابة رقم 2</label>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.q_ans3, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.q_ans3, "", new { @class = "text-danger" })
+                                </div>
+                                <label class="control-label col-md-2">الإيجابة رقم 3</label>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.q_corr, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.q_corr, "", new { @class = "text-danger" })
+                                </div>
+                                <label class="control-label col-md-2">الإيجابة الصحيحة</label>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="" alt="" id="pimg" class="img-responsive position:absolute" />
+                                        </div>
+                                        <div class="col-offset-4 col-md-8">
+                                            @Html.EditorFor(model => model.q_img, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.q_img, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <label class="control-label col-md-2">صورة السؤال</label>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.q_img_show, new List<SelectListItem>()
+    {  new SelectListItem() { Text= "نشطة", Value = "1", Selected =true },
+        new SelectListItem() { Text= "مسودة", Value = "0" }
+
+    }, "  -----إختار حالة المقالة-----  ")
+
+                                    @Html.ValidationMessageFor(model => model.q_img_show, "", new { @class = "text-danger" })
+                                </div>
+                                <label class="control-label col-md-2">إظهار السؤال</label>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="إضافة السؤال" class="btn btn-default" />
+                                </div>
+                            </div>
+                        }
+
+                        <div class="clearfix">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+            //$('#post_img').change(function () { console.log("الحمد لله رب العالمين"); });
+            $('#q_img').on("change", function () {
+                $('#pimg').attr("src", $('#q_img').val());
+            });
+        });
+    </script>
+
+}

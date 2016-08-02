@@ -1,0 +1,261 @@
+﻿@model IEnumerable<SalFestival2015.Models.tbl_quize>
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "المقالات و الأخبار";
+}
+<style type="text/css">
+    ul.listwinner {
+        margin: 0;
+        padding: 0;
+    }
+
+        ul.listwinner li {
+            background-image: url("Images/check.png");
+            background-position: right center;
+            background-repeat: no-repeat;
+            padding: 10px 30px 10px 10px;
+        }
+
+            ul.listwinner li span {
+                color: Red;
+                font-weight: bold;
+            }
+
+    .quize {
+        background: none repeat scroll 0 0;
+        border: 1px solid white;
+        margin: 10px;
+        padding: 10px;
+    }
+
+        .quize p {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 25px;
+            margin: 10px;
+            padding: 10px;
+            text-align: right;
+        }
+
+        .quize #quize_img {
+            margin: 5px auto;
+            width: 500px;
+        }
+
+            .quize #quize_img img {
+                background-color: white;
+                padding: 2px;
+            }
+
+        .quize ul li h3 {
+            font-size: 18px;
+            padding: 5px;
+        }
+
+        .quize td {
+            font-size: 11px;
+            font-weight: bold;
+            padding: 5px;
+        }
+
+    #quize-spoonsers {
+    }
+
+    ul#cond {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+        ul#cond li {
+            border-bottom: 1px solid #c1c1c1;
+        }
+
+            ul#cond li:last-child {
+                border-bottom: none;
+            }
+</style>
+
+
+
+<div class="row">
+    <div class="container">
+        <section id="q2" class="col-sm-9">
+
+            <div class="quize" style="margin-bottom:40px;">
+                @foreach (var item in Model)
+                {
+                    <p>
+                        رقم السؤال:<span class="qstno">@item.q_no</span>
+                    </p>
+
+
+                    @item.q_question
+
+                    <div id="quize_img">
+                        <img src='@Url.Content(@item.q_img)' alt="صورة السؤال" />
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <label class="control-label col-md-10 ">@item.q_ans1</label>
+                            <div class="col-md-2">
+                                @Html.RadioButton("rbGrp", "1", true, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-10 ">@item.q_ans2</label>
+                            <div class="col-md-2">
+                                @Html.RadioButton("rbGrp", "2", true, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-10 ">@item.q_ans3</label>
+                            <div class="col-md-2">
+                                @Html.RadioButton("rbGrp", "3", true, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="gstdetails">
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <input type="text" id="name" class="form-control" />
+
+                    </div>
+                    <label class="control-label col-md-2">إسم المشارك</label>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="text" id="email" class="form-control" />
+                    </div>
+                    <label class="control-label col-md-2">البريد الإلكتروني</label>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="text" id="tel" class="form-control" />
+                    </div>
+                    <label class="control-label col-md-2">الهاتف</label>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @*<a href='@Url.Action("AddDialyQuize2","quize")'>ddddddd</a>*@
+
+                        <input type="button" id="sfrm" value="إرسال الإجابة" class="btn btn-default" />
+                    </div>
+                </div>
+                @*<a href='@Url.Action("AddDialyQuize2", "Quize", new { @date = "asdsdf", @name = "DDDD", @email = "Dddd", @tel = "sdfsd", @qans = "dddd", @qno = "ddd" })' class="btn btn-default">
+
+                        أرسل الإيجابة
+                    </a>*@
+
+
+                @*@{Html.RenderAction("AddDialyQuize");}*@
+            </div>
+        </section>
+        <section id="q1" class="col-sm-3">
+            <h4>السؤال الإسبوعي</h4>
+            <div id="quize-spoonsers">
+
+
+
+                <div class="list-group">
+                    <a href="#" class="list-group-item active" style="background-color:rgb(21,111,16); color:#fff;">
+                        شروط الإشتراك بمسابقة الموقع الإسبوعية
+                    </a>
+                    <a href="#" class="list-group-item">تعبئة الإسم الثلاثي و القبيلة</a>
+                    <a href="#" class="list-group-item"> كتابة رقم الهاتف</a>
+                    <a href="#" class="list-group-item">أن لا يحتوي الإسم على رموز أو فواصل</a>
+                    <a href="#" class="list-group-item">أن يكون إسم المتسابق باللغة العربية</a>
+                    <a href="#" class="list-group-item">في حالة عد الإلتزام بالشروط يستبعد المشارك من السحب على الجائزة</a>
+                </div>
+                <span style="color:red;font-size:12px;font-weight:bold;">ملاحظة</span><br />
+                <p>
+                    المشاركة بنفس الإسم أكثر من مرة لا يعني زيادة فرصة الفوز
+
+                </p>
+            </div>
+            <div class="quize" align="right" dir="rtl">
+
+                <p>
+                    <br /><span style="color:#995524;">
+                        عشرون فائزاً نهاية كل إسبوع<br />
+                        لكل فائز 50 ر.ع
+                    </span>
+                </p>
+
+
+
+
+                <hr />
+                <table dir="ltr">
+                    <tr>
+                        <td>للإستفسار:</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>info@dm.gov.om</td>
+
+                        <td> <img src="~/Content/Images/email2.png" width="22" /></td>
+                    </tr>
+                    <tr>
+
+                        <td>95112447</td>
+
+                        <td>
+                            <img src="~/Content/Images/gsm.png" width="16" />
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+            <div id="rData">
+
+            </div>
+            <div class="clear"></div>
+        </section>
+    </div>
+</div>
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<script>
+    $(function () {
+        $('#sfrm').on("click", function (e) {
+            e.preventDefault();
+            var fullDate = new Date();
+            //convert month to 2 digits
+            var twoDigitMonth = ((fullDate.getMonth().length + 1) === 1) ? (fullDate.getMonth() + 1) : '0' + (fullDate.getMonth() + 1);
+            var mdate = fullDate.getDate() + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
+            var name = $("#name").val();
+            var email = $("#email").val();
+            var tel = $("#tel").val();
+            var qno = $(".qstno").text();
+            var qans = $("input:radio[name='rbGrp']:checked").val(); // get the value of the checked radiobutton, from the radiobutton group "rbGrp"
+            var  url= '@Url.Action("AddDialyQuize2", "Quize")' + '?date=' + mdate +  "&name=" + name + "&email=" + email + "&tel="+ tel + "&qans=" + qans + "&qno=" + qno;
+            $.ajax({
+                type: 'GET',
+                url: url,
+                data: '',
+                dataType: 'html',
+                complete: function (xmlHttp) {
+                    // xmlHttp is a XMLHttpRquest object
+                    if (xmlHttp.code != 200) {
+                        top.location.href = 'http://iramoman.com/home/AddDialyQuize/?date='+mdate+"&name="+name+"&email="+email+"&tel="+tel+"&qans="+qans+"&qno="+qno;
+                    }
+                }
+                             
+            });
+
+        @*$.get('@Url.Action("AddDialyQuize2")', { date: mdate, name: name, email:email, tel:tel, qans:qans, qno:qno }, function (data) {*@
+        //    //Populate your "rData" element with the results
+        //    $("#rData").html(data);
+        //});
+
+        //$.ajax({ url: 'AddDialyQuize2?date='+mdate+"&name="+name+"&email="+email+"&tel="+tel+"&qans="+qans+"&qno="+qno });
+    });
+    });
+</script>

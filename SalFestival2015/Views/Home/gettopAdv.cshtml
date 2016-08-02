@@ -1,0 +1,12 @@
+﻿@model IEnumerable<SalFestival2015.Models.tbl_articles>
+@{
+    Layout = "";
+}
+@foreach(var item in Model)
+{
+ <div class="siteheadlines">
+     @{Html.RenderAction("HeadLines", "Articles");}
+ </div>
+                   
+
+}

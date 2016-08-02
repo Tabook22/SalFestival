@@ -1,0 +1,124 @@
+﻿@model IEnumerable<SalFestival2015.Models.tbl_siteSections>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Sections";
+    var grid = new WebGrid(source: Model, rowsPerPage: 10);
+}
+<style>
+    table.gridtable {
+    }
+</style>
+<h2>Sections</h2>
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div id="sitesections">
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panerl-primary">
+                @*<div class="panel-heading"></div>*@
+                <div class="panel-body">
+                    <div style="border-bottom:1px solid #222; text-align:left;padding-bottom:10px;margin-bottom:10px;">
+                        @Ajax.ActionLink("إضافة قسم جديد", "createNewSection", "SiteSettings", new AjaxOptions
+                                                                                            {
+                                                                                                HttpMethod = "GET",
+                                                                                                UpdateTargetId = "sitesections",
+                                                                                                InsertionMode = InsertionMode.Replace
+                                                                                            })
+                    </div>
+
+                    @using (Html.BeginForm("DeleteSelected", "SiteSettings", FormMethod.Post))
+                    {
+                        <input type="submit" value="حذف الإقسام" class="btn btn-default" />
+                        @grid.GetHtml(
+                                    tableStyle: "table table-condense",
+                                    columns:
+                                    grid.Columns(
+                                    grid.Column(format: @<text><input type="checkbox" name="ids" value="@item.secId" /> </text>, header: ""),
+                                    grid.Column("secId", "المعرف"),
+                                    grid.Column("sec_title", "عنوان القسم"),
+                                    grid.Column("sec_lock", "الموقع"),
+                                    grid.Column("sec_desc", "وصف مختصر"),
+                                    grid.Column(format:@<text>@Ajax.ActionLink("تعديل", "editSection", "SiteSettings", new { id = @item.secId }, new AjaxOptions
+                                                                                                                         {
+                                                                                                                             HttpMethod = "GET",
+                                                                                                                             UpdateTargetId = "sitesections",
+                                                                                                                             InsertionMode = InsertionMode.Replace
+                                                                                                                         })</text>, header: "تعديل")
+                                                )
+                                    )
+
+                    }
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+@*<div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panerl-primary">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">
+                        <div>
+                            @Ajax.ActionLink("إضافة قسم جديد", "createNewSection", "SiteSettings", new AjaxOptions
+                                                                                            {
+                                                                                                HttpMethod = "GET",
+                                                                                                UpdateTargetId = "sitesections",
+                                                                                                InsertionMode =InsertionMode.Replace
+                                                                                            })
+                        </div>
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.sec_title)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.sec_desc)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.sec_status)
+                                </th>
+                                <th></th>
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.sec_title)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.sec_desc)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.sec_status)
+                                    </td>
+                                    <td>
+                                        @Ajax.ActionLink("تعديل", "editSection", "SiteSettings",new{id=item.secId}, new AjaxOptions
+                                                                                            {
+                                                                                                HttpMethod = "GET",
+                                                                                                UpdateTargetId = "sitesections",
+                                                                                                InsertionMode = InsertionMode.Replace
+                                                                                            }) |
+                                        @Html.ActionLink("حذف", "secDelete", new { id = item.secId }, new { onclick = "return confirm('هل أنت متأكد من حذف القسم؟');" })
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="sitesections">
+
+                </div>
+            </div>
+        </div>
+    </div>*@

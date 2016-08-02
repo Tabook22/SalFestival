@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "مهرجان صلالة السياحي 2015";
+}
+<style>
+    .artimg{padding-right:320px;}
+.templatemo_servicetxt{width:300px;}
+.artimg .aimg{
+padding-top:50px;
+width:200px;
+height:350px;
+}
+
+.mart {
+background-color: rgba(0, 0, 0, .5);
+}
+
+.templatemo_servicetxt h2 {
+  color: #11560D;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.m1{
+   
+}
+
+.m2 {
+  
+}
+.m3{margin-top:-90px;
+background-color:#fff;
+border-bottom:1px solid #ccc;
+}
+
+.eventtable{
+font-size:16px;
+padding:5px;
+border:1px solid #ccc;
+margin-top:10px;
+background-color:rgb(178,12,12);
+
+
+}
+
+.eventtable a{
+color:#fff;
+text-decoration:none;
+}
+
+.eventtable a:hover{
+color:#ccc;
+}
+</style>
+<div class="m1" style="padding-bottom:80px;">
+@*@{Html.RenderAction("getImgGal","Home");}*@
+</div>
+<div class="m3">
+    <div class="container">
+
+        <div class="row row-margin-bottom">
+            @{Html.RenderAction("gettopAdv");}
+            <div class="col-md-1"></div>
+            @{Html.RenderAction("dailyevents");}
+        </div>
+    </div>
+</div>
+<div class="m4">
+    @{Html.RenderAction("getMainArt", "Home");}
+    </div>
+    <div class="m2">
+        @{Html.RenderAction("DArticles", "Home");}
+    </div>
+    <script>
+        $(".hexagon-in2").css({
+            "background-size": "250px 320px"
+        });
+    </script>

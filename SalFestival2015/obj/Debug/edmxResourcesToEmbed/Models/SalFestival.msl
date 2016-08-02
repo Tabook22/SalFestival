@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="salalahDBModelStoreContainer" CdmEntityContainer="salalahDBEntities">
+    <EntitySetMapping Name="cusInfoes">
+      <EntityTypeMapping TypeName="salalahDBModel.cusInfo">
+        <MappingFragment StoreEntitySet="cusInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="cus_title" ColumnName="cus_title" />
+          <ScalarProperty Name="cus_address" ColumnName="cus_address" />
+          <ScalarProperty Name="cus_office_tel" ColumnName="cus_office_tel" />
+          <ScalarProperty Name="cus_home_tel" ColumnName="cus_home_tel" />
+          <ScalarProperty Name="cus_mobile" ColumnName="cus_mobile" />
+          <ScalarProperty Name="cus_email" ColumnName="cus_email" />
+          <ScalarProperty Name="cus_img" ColumnName="cus_img" />
+          <ScalarProperty Name="cus_business_type" ColumnName="cus_business_type" />
+          <ScalarProperty Name="cus_notice" ColumnName="cus_notice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="locs">
+      <EntityTypeMapping TypeName="salalahDBModel.loc">
+        <MappingFragment StoreEntitySet="loc">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="clat" ColumnName="clat" />
+          <ScalarProperty Name="clog" ColumnName="clog" />
+          <ScalarProperty Name="zoom" ColumnName="zoom" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="cusId" ColumnName="cusId" />
+          <ScalarProperty Name="display" ColumnName="display" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loc_markes">
+      <EntityTypeMapping TypeName="salalahDBModel.loc_markes">
+        <MappingFragment StoreEntitySet="loc_markes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="locId" ColumnName="locId" />
+          <ScalarProperty Name="lat" ColumnName="lat" />
+          <ScalarProperty Name="log" ColumnName="log" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="desc" ColumnName="desc" />
+          <ScalarProperty Name="display" ColumnName="display" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="salalahDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_adv_cats">
+      <EntityTypeMapping TypeName="salalahDBModel.tbl_adv_cats">
+        <MappingFragment StoreEntitySet="tbl_adv_cats">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="adv_cat_title" ColumnName="adv_cat_title" />
+          <ScalarProperty Name="adv_cat_img" ColumnName="adv_cat_img" />
+          <ScalarProperty Name="adv_cat_desc" ColumnName="adv_cat_desc" />
+          <ScalarProperty Name="adv_cat_lnk" ColumnName="adv_cat_lnk" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="display" ColumnName="display" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_cats">
+      <EntityTypeMapping TypeName="salalahDBModel.tbl_cats">
+        <MappingFragment StoreEntitySet="tbl_cats">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="cat_desc" ColumnName="cat_desc" />
+          <ScalarProperty Name="cat_summary" ColumnName="cat_summary" />
+          <ScalarProperty Name="cat_show" ColumnName="cat_show" />
+          <ScalarProperty Name="cat_order" ColumnName="cat_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_gust_Answers">
+      <EntityTypeMapping TypeName="salalahDBModel.tbl_gust_Answers">
+        <MappingFragment StoreEntitySet="tbl_gust_Answers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="g_date" ColumnName="g_date" />
+          <ScalarProperty Name="g_name" ColumnName="g_name" />
+          <ScalarProperty Name="g_email" ColumnName="g_email" />
+          <ScalarProperty Name="g_tel" ColumnName="g_tel" />
+          <ScalarProperty Name="q_no" ColumnName="q_no" />
+          <ScalarProperty Name="q_ans" ColumnName="q_ans" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Images">
+      <EntityTypeMapping TypeName="salalahDBModel.tbl_Images">
+        <MappingFragment StoreEntitySet="tbl_Images">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImgName" ColumnName="ImgName" />
+          <ScalarProperty Name="ImgDir" ColumnName="ImgDir" />
+          <ScalarProperty Name="ImgPath" ColumnName="ImgPath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_mainnews">
+      <EntityTypeMapping TypeName="salalahDBModel.tbl_mainnews">
+        <MappingFragment StoreEntitySet="tbl_mainnews">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Npost_pid" ColumnName="Npost_pid" />
+          <ScalarProperty Name="Npost_catid" ColumnName="Npost_catid" />
+          <ScalarProperty Name="Npost_order" ColumnName="Npost_order" />
+          <ScalarProperty Name="Npost_type" ColumnName="Npost_type" />
+          <ScalarProperty Name="Npost_postion" ColumnName="Npost_postion" />
+          <ScalarProperty Name="Npost_TabLoc" ColumnName="Npost_TabLoc" />
+          <ScalarProperty Name="Npost_show" ColumnName="Npost_show" />
+          <ScalarProperty Name="Npost_date" ColumnName="Npost_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_menu">
+      <EntityTypeMapping TypeName="salalahDBModel.tbl_menu">
+        <MappingFragment StoreEntitySet="tbl_menu">
+          <ScalarProperty Name="menu_item_id" ColumnName="menu_item_id" />
+          <ScalarProperty Name="menu_item_name" ColumnName="menu_item_name" />
+          <ScalarProperty Name="menu_item_link" ColumnName="menu_item_link" />
+          <ScalarProperty Name="menu_item_target" ColumnName="menu_item_target" />
+          <ScalarProperty Name="parent_item_id" ColumnName="parent_item_id" />
+          <ScalarProperty Name="menu_item_order" ColumnName="menu_item_order" />
+          <ScalarProperty Name="lang" ColumnName="lang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_posts">
+      <EntityTypeMapping TypeName="salalahDBModel.tbl_posts">
+        <MappingFragment StoreEntitySet="tbl_posts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="post_auid" ColumnName="post_auid" />
+          <ScalarProperty Name="post_title" ColumnName="post_title" />
+          <ScalarProperty Name="post_date" ColumnName="post_date" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="month" ColumnName="month" />
+          <ScalarProperty Name="post_content" ColumnName="post_content" />
+          <ScalarProperty Name="post_excerpt" ColumnName="post_excerpt" />
+          <ScalarProperty Name="post_catid" ColumnName="post_catid" />
+          <ScalarProperty Name="post_modified" ColumnName="post_modified" />
+          <ScalarProperty Name="post_status" ColumnName="post_status" />
+          <ScalarProperty Name="post_parent" ColumnName="post_parent" />
+          <ScalarProperty Name="post_menu_order" ColumnName="post_menu_order" />
+          <ScalarProperty Name="post_img" ColumnName="post_img" />
+          <ScalarProperty Name="post_price" ColumnName="post_price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_quize">
+      <EntityTypeMapping TypeName="salalahDBModel.tbl_quize">
+        <MappingFragment StoreEntitySet="tbl_quize">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="q_date" ColumnName="q_date" />
+          <ScalarProperty Name="q_no" ColumnName="q_no" />
+          <ScalarProperty Name="q_question" ColumnName="q_question" />
+          <ScalarProperty Name="q_ans1" ColumnName="q_ans1" />
+          <ScalarProperty Name="q_ans2" ColumnName="q_ans2" />
+          <ScalarProperty Name="q_ans3" ColumnName="q_ans3" />
+          <ScalarProperty Name="q_ans4" ColumnName="q_ans4" />
+          <ScalarProperty Name="q_corr" ColumnName="q_corr" />
+          <ScalarProperty Name="q_img" ColumnName="q_img" />
+          <ScalarProperty Name="q_img_show" ColumnName="q_img_show" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Rss">
+      <EntityTypeMapping TypeName="salalahDBModel.tbl_Rss">
+        <MappingFragment StoreEntitySet="tbl_Rss">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="datepublished" ColumnName="datepublished" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_websettings_cats">
+      <EntityTypeMapping TypeName="salalahDBModel.tbl_websettings_cats">
+        <MappingFragment StoreEntitySet="tbl_websettings_cats">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="post_no" ColumnName="post_no" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_winners">
+      <EntityTypeMapping TypeName="salalahDBModel.tbl_winners">
+        <MappingFragment StoreEntitySet="tbl_winners">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="g_date" ColumnName="g_date" />
+          <ScalarProperty Name="g_name" ColumnName="g_name" />
+          <ScalarProperty Name="g_email" ColumnName="g_email" />
+          <ScalarProperty Name="g_tel" ColumnName="g_tel" />
+          <ScalarProperty Name="q_no" ColumnName="q_no" />
+          <ScalarProperty Name="q_ans" ColumnName="q_ans" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_contact">
+      <EntityTypeMapping TypeName="salalahDBModel.tbl_contact">
+        <MappingFragment StoreEntitySet="tbl_contact">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="GDate" ColumnName="GDate" />
+          <ScalarProperty Name="GName" ColumnName="GName" />
+          <ScalarProperty Name="GAddress" ColumnName="GAddress" />
+          <ScalarProperty Name="GEmail" ColumnName="GEmail" />
+          <ScalarProperty Name="GSubject" ColumnName="GSubject" />
+          <ScalarProperty Name="GData" ColumnName="GData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_users">
+      <EntityTypeMapping TypeName="salalahDBModel.tbl_users">
+        <MappingFragment StoreEntitySet="tbl_users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cdate" ColumnName="cdate" />
+          <ScalarProperty Name="mdate" ColumnName="mdate" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="un" ColumnName="un" />
+          <ScalarProperty Name="ps" ColumnName="ps" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

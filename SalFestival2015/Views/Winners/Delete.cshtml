@@ -1,0 +1,73 @@
+﻿@model SalFestival2015.Models.tbl_winners
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tbl_winners</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.g_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.g_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.g_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.g_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.g_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.g_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.g_tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.g_tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.q_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.q_no)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.q_ans)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.q_ans)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

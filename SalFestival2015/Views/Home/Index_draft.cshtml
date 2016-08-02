@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout_old.cshtml";
+}
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+    ul#mcont {
+        list-style: none;
+        font-size: 12px;
+        color: #fff;
+    }
+
+    .undrlogo {
+        margin: 10px 0;
+        text-align: center;
+        /*background-color:rgba(79, 148, 47,0.5);*/
+        width: 500px;
+        height: auto;
+        position: absolute;
+        left: 50%;
+        margin-left: -250px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-12" style="position:relative; height:300px;">
+        <div class="undrlogo">
+
+            <img src="~/Content/images/Dm_Logo.png" />
+            <p>
+                <img src="~/Content/images/sitetitle2.png" />
+            </p>
+
+        </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="position:relative;">
+            <p style="font-size:48px;font-weight:bold;text-align:center;color:rgb(221,152,74);">
+                شكراً على زيارتكم ... الموقع حالياً تحت الصيانة
+            </p>
+        </div>
+    </div>
+
+<div class="row">
+    <div class="col-sm-12" style="font-size:48px;font-weight:bold;text-align:center;color:rgb(221,152,74);" dir="rtl">
+        <h2 style="color:#222;">كما يمكنك الإتصال بنا على العناوين التالية:</h2>
+        <ul id="mcont" style="color:#222;">
+            <li>الهاتف: 0096823212674</li>
+            <li>البريد الإلكتروني: <a href="mailto:webteam@dm.gov.om">webteam@dm.gov.om</a></li>
+            <li>العنوان:  ص.ب 50 الرمز البريدي 211 سلطنه عمان-صلالة</li>
+        </ul>
+    </div>
+</div>
+
+<script src="~/Content/bootstrap.min.js"></script>

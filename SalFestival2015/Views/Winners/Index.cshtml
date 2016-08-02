@@ -1,0 +1,84 @@
+﻿@model IEnumerable<SalFestival2015.Models.tbl_winners>
+
+@{
+    ViewBag.Title = "قائمة الفائزين بالمسابقة اليومية";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using PagedList.Mvc; @*import this so we get our HTML Helper*@
+@using PagedList; @*//import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)*@
+
+<style>
+    .wnrs th{text-align:right;}
+</style>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<h2>قائمة الفائزين بالمسابقة اليومية</h2>
+
+<p>
+    @Html.ActionLink("إضافة فائز", "Create")
+</p>
+<table class="table table-condensed wnrs" style="color:rgb(119,132,146);">
+    <tr>
+        <th>
+            <lable>التاريخ</lable>
+        </th>
+        <th>
+            <lable>الإسم</lable>
+        </th>
+        <th>
+            <lable>البريد الأكتروني</lable>
+        </th>
+        <th>
+            <lable>رقم الهاتف</lable>
+        </th>
+        <th>
+            <lable>رقم السؤال</lable>
+        </th>
+        <th>
+            <lable>الإيجابة</lable>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.OnePageOfWinners)
+    {
+        <tr>
+            <td>
+               @item.g_date.ToString("dd-MMM-yyyy")
+            </td>
+            <td>
+              @item.g_name
+            </td>
+            <td>
+              @item.g_email
+            </td>
+            <td>
+                @item.g_tel
+            </td>
+            <td>
+                @item.q_no
+            </td>
+            <td>
+                @item.q_ans
+            </td>
+            <td>
+                @Html.ActionLink("تعديل", "Edit", new { id = item.Id }) |
+                @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+                @Ajax.ActionLink("الحذف", "Delete", new { id = item.Id },
+                                                new AjaxOptions
+                                                {
+                                                    HttpMethod = "POST",
+                                                    Confirm = "هل تريد حذف المشارك"
+                                                },
+                                                new { @class = "href", id = "delete" })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="spg" dir="ltr">
+    <!-- output a paging control that lets the user navigation to the previous page, next page, etc -->
+    @Html.PagedListPager((IPagedList)ViewBag.OnePageOfWinners, page => Url.Action("Index", new { page }))
+    @*@Html.PagedListPager((IPagedList)ViewBag.OnePageOfPosts, page => Url.Action("Index", new { page }))*@
+</div>

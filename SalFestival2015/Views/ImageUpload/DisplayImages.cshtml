@@ -1,0 +1,88 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@{
+    ViewBag.Title = "DisplayImages";
+}
+<style>
+    .mf {
+        padding: 5px;
+        border: 1px solid #eee;
+    }
+</style>
+<h2>مشاهدة صور الموقع</h2>
+<div class="row" style="background-color:#fff;">
+    <div class="col-md-6">
+        <div class="panel panel-prinamry">
+            <div class="panel-header">
+                <div class="pandel-body">
+            
+                       @ViewBag.Message
+             
+                @using (@Html.BeginForm("DisplayImages", "ImageUpload", FormMethod.Post, new { id = "formUplImg", @class = "myclass" }))
+                {
+
+                    @Html.AntiForgeryToken()
+
+                    <div>
+                        <p>الرجاء إختيار إسم المجلد ثم الضغط على ر عرض الصور</p>
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <input id="btnAjax" name="btnAjax" type="button" value="عرض الصور" class="form-control btn btn-primary" style="width:100px;"/>
+                            </div>
+
+                            <div class="col-sm-8">
+                                @Html.DropDownList("myFolders", new SelectList(ViewBag.imgFolders), new { @class = "form-control" })
+                                @Html.ValidationSummary(false, "", new { @class = "text-danger" }, null)
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="row" style="background-color:#fff;">
+    <div class="col-md-12">
+        <div id="imgdetails" class="mf">
+
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(function () {
+            //$('.imgdetails').on('click', function (e) {
+            //    $.get($(this).prop('href'), function (response) {
+            //        $('#imgdetails').html(response)
+            //    })
+            //    e.preventDefault();
+            //});
+            $('#btnAjax').on('click', function (e) {
+
+                var fld = $("#myFolders option:selected").text();
+                $.ajax({
+                    url: '/ImageUpload/dsImages',
+                    contentType: 'application/html; charset=utf-8',
+                    data: { imgfolder: fld },
+                    type: 'GET',
+                    dataType: 'html'
+
+                })
+                .success(function (result) {
+                    $('#imgdetails').html(result);
+                })
+                .error(function (xhr, status) {
+                    alert(status);
+                })
+                e.preventDefault();
+            });
+
+        });
+    </script>
+
+}

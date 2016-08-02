@@ -1,0 +1,306 @@
+﻿@model SalFestival2015.ViewModels.ImgUpload
+           @{
+               Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+           }
+<h2>رفع الصور للموقع</h2>
+<div class="row" style="background-color:#fff;padding:10px;">
+    <div class="col-md-6" style="position:relative;">
+        @*@ViewBag.FileName
+                <br />
+            <img src=@ViewData["imageurl"] alt="" />*@
+        @{
+            if (TempData["imgName"] != null)
+            {
+
+                    <article class="white-panel">
+                        <img src=@ViewBag.ImageUrl class=" img-responsive" alt="" />
+                        <h4><a href=@ViewBag.imglink target="_blank">@ViewBag.FileName</a></h4>
+                        <p>
+                            @ViewBag.Desc
+                        </p>
+                    </article>
+
+            }
+            else
+            {
+                <img src="http://placehold.it/200/200" />
+            }
+        }
+    </div>
+    <div class="col-md-6" style="background-color:#fff;">
+        <div class="panel panel-prinamry">
+            <div class="panel-header">
+                <div class="pandel-body">
+                    @using (@Html.BeginForm("UploadImages", "ImageUpload", FormMethod.Post, new { id = "formUplImg", enctype = "multipart/form-data", @class = "jqtransform" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div>
+                            <div class="form-group">
+                                <div class="col-sm-2">
+                                    <a href='@Url.Action("ViewLyubomir", "ImageUpload")' class="modal-link btn btn-success" data-target="#modal-container" data-toggle="modal">إضافة مجلد </a>
+                                    @*<input type="button" value="إضافة مجلد" />*@
+                                </div>
+                                <div class="col-sm-2">
+                                    @Html.ActionLink("حذف مجلد ", "ViewLyubomir2", "ImageUpload", null, new { @class = "modal-link2 btn btn-success" })
+                                </div>
+                                <div class="col-sm-8">
+                                    @*@Html.DropDownList("myFolders", new SelectList(ViewBag.myFolders, "Text", "Value"))*@
+                                    @Html.DropDownList("myFolders", ViewData["Folders"] as SelectList, new { @class = "form-control" })
+                                    @*@Html.DropDownList("myFolders", ViewData["Folders"] as SelectList, new { @class = "form-control" })*@
+                                    @Html.ValidationSummary(false, "", new { @class = "text-danger" }, null)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>@Html.LabelFor(x => x.imgtitle)</label>
+                                @Html.TextBoxFor(x => x.imgtitle, new { placehoder = "عنوان الصورة", @Class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label>@Html.LabelFor(x => x.imgdesc)</label>
+                                @Html.TextAreaFor(x => x.imgdesc, new { placehoder = "وصف الصورة", @Class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <lable>
+                                    @Html.LabelFor(x => x.imglink)
+                                </lable>
+                                @Html.TextBoxFor(x => x.imglink, new { placeholder = "رابط الصورة", @class = "form-control" })
+                            </div>
+                            <div class="form-group" style="border:1px solid #eee;padding:10px;">
+                                <fieldset>
+                                    <legend>تحميل الصورة</legend>
+                                    <input type="file" id="fileToUpload" name="file" />
+                                    <span class="field-validation-error" id="spanfile"></span>
+                                </fieldset>
+                                @*@Html.LabelFor(x=>x.imgtitle)
+                                    @Html.TextBoxFor(x=>x.imgtitle, new { type = "file" })*@
+                                @*@Html.TextBox("", ViewData.TemplateInfo.FormattedModelValue.ToString(), new { type = "file" })*@
+                            </div>
+                            @*<div class="alert alert-warning" role="alert">
+                                    <p>في حالة عدم كتابة الطول و العرض للصورة فسيتم إضافة قيم إفتراضية هي 600 بكسيل للعرض و 400 بيكسل للطول</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>@Html.LabelFor(x => x.imgw) (بكسيل)</label>
+                                    @Html.TextBoxFor(x => x.imgw, new { placehoder = "عرض الصورة", width = "50", @Class = "form-control imghw" })
+                                    @Html.ValidationMessageFor(x => x.imgw, string.Empty, new { @style = "Font-weight:bold;color:red;" })
+                                </div>
+                                <div class="form-group">
+                                    <label>@Html.LabelFor(x => x.imgh) (بكسيل)</label>
+                                    @Html.TextBoxFor(x => x.imgh, new { placehoder = "إرتفاع الصورة", width = "50", @Class = "form-control imghw" })
+                                    @Html.ValidationMessageFor(x => x.imgh, string.Empty, new { @style = "Font-weight:bold;color:red;" })
+                                </div>*@
+                            <button type="submit" class="btn btn-danger">إرسال</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@**********************************************************************Modal************************************************************************************@
+<style>
+    .modal-content {
+        width: 600px !important;
+        margin: 30px auto !important;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        // Initialize numeric spinner input boxes
+        //$(".numeric-spinner").spinedit();
+        // Initialize modal dialog
+        // attach modal-container bootstrap attributes to links with .modal-link class.
+        // when a link is clicked with these attributes, bootstrap will display the href content in a modal dialog.
+        $('body').on('click', '.modal-link', function (e) {
+            e.preventDefault();
+            $(this).attr('data-target', '#modal-container');
+            $(this).attr('data-toggle', 'modal');
+        });
+        $('body').on('click', '.modal-link2', function (e) {
+            e.preventDefault();
+            $(this).attr('data-target', '#modal-container2');
+            $(this).attr('data-toggle', 'modal');
+
+        });
+        // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+        $('body').on('click', '.modal-close-btn', function () {
+            $('#modal-container').modal('hide');
+        });
+        //clear modal cache, so that new content can be loaded
+        $('#modal-container').on('hidden.bs.modal', function () {
+            $(this).removeData('bs.modal');
+        });
+        // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+        $('body').on('click', '.modal-close-btn', function () {
+            $('#modal-container2').modal('hide');
+        });
+        //clear modal cache, so that new content can be loaded
+        $('#modal-container2').on('hidden.bs.modal', function () {
+            $(this).removeData('bs.modal');
+        });
+        $('#CancelModal').on('click', function () {
+            return false;
+        });
+
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $('#approve-btn').click(function () {
+            $('#modal-container2').modal('hide');
+        });
+
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $(".deleteButton").click(function () {
+            if (confirm('Are you sure you wish to delete this item?')) {
+                $.post($(this).attr("href"));
+            }
+        });
+    });</script>
+<div id="modal-container" class="modal fade"
+     tabindex="-1" role="dialog">
+    <div class="modal-content">
+    </div>
+</div>
+<div id="modal-container2" class="modal fade"
+     tabindex="-1" role="dialog">
+    <div class="modal-content">
+
+    </div>
+</div>
+@section myStyle{
+    <style>
+        .imghw {
+            width: 50px;
+            font-weight: bold;
+        }
+
+        .white-panel {
+            position: absolute;
+            background: white;
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+        }
+            /*
+        stylize any heading tags withing white-panel below
+        */
+
+            .white-panel h1 {
+                font-size: 1em;
+            }
+
+                .white-panel h1 a {
+                    color: #A92733;
+                }
+
+            .white-panel:hover {
+                box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+                margin-top: -5px;
+                -webkit-transition: all 0.3s ease-in-out;
+                -moz-transition: all 0.3s ease-in-out;
+                -o-transition: all 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
+            }
+    </style>
+}
+
+@*Validating the file on client side*@
+@section Scripts{
+    <script type="text/jscript">
+        //get file size
+        function GetFileSize(fileid) {
+            try {
+                var fileSize = 0;
+                //for IE
+                if ($.browser.msie) {
+                    //before making an object of ActiveXObject,
+                    //please make sure ActiveX is enabled in your IE browser
+                    var objFSO = new ActiveXObject("Scripting.FileSystemObject"); var filePath = $("#" + fileid)[0].value;
+                    var objFile = objFSO.getFile(filePath);
+                    var fileSize = objFile.size; //size in kb
+                    fileSize = fileSize / 1048576; //size in mb
+                }
+                    //for FF, Safari, Opeara and Others
+                else {
+                    fileSize = $("#" + fileid)[0].files[0].size //size in kb
+                    fileSize = fileSize / 1048576; //size in mb
+                }
+
+                // alert("Uploaded File Size is" + fileSize + "MB");
+                return fileSize;
+            }
+            catch (e) {
+                alert("Error is :" + e);
+            }
+        }
+
+        //get file path from client system
+        function getNameFromPath(strFilepath) {
+
+            var objRE = new RegExp(/([^\/\\]+)$/);
+            var strName = objRE.exec(strFilepath);
+
+            if (strName == null) {
+                return null;
+            }
+            else {
+                return strName[0];
+            }
+
+        }
+
+        $("#btnSubmit").live("click", function () {
+
+            if ($('#fileToUpload').val() == "") {
+                $("#spanfile").html("Please upload file");
+                return false;
+            }
+            else {
+                return checkfile();
+            }
+        });
+
+        function checkfile() {
+            var file = getNameFromPath($("#fileToUpload").val());
+            if (file != null) {
+                var extension = file.substr((file.lastIndexOf('.') + 1));
+                //  alert(extension);
+                switch (extension) {
+                    case 'jpg':
+                    case 'png':
+                    case 'gif':
+                    case 'pdf':
+                        flag = true;
+                        break;
+                    default:
+                        flag = false;
+                }
+            }
+            if (flag == false) {
+                $("#spanfile").text("You can upload only jpg,png,gif,pdf extension file");
+                return false;
+
+            }
+            else {
+                var size = GetFileSize('fileToUpload');
+                if (size > 3) {
+                    $("#spanfile").text("You can upload file up to 3 MB");
+                    return false;
+                }
+                else {
+                    $("#spanfile").text("");
+                }
+            }
+        }
+        $(function () {
+            $("#fileToUpload").change(function () {
+                checkfile();
+            });
+
+        });
+
+    </script>
+
+}
+

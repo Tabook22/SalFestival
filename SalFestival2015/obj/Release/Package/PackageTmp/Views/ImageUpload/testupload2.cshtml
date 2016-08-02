@@ -1,0 +1,48 @@
+﻿@model SalFestival2015.Models.tbl_images1
+<div>
+    <button type="submit" name="Save" class="btn btn-default btn-xs">Save Changes</button>
+    @Ajax.ActionLink("Cancel", "ProfileDescription", "Profile",
+            new { imgid = 1097 , type = "Show" },
+            new AjaxOptions()
+            {
+                HttpMethod = "GET",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "GeneralSection"
+            },
+            new { @class = "btn btn-default btn-xs" })
+</div>
+
+<input type="hidden" name="imgid" id="imgid" value=1097 />
+
+<fieldset>
+    <legend>Edit Photos</legend>
+    <div>
+        Select profile picture:
+        <input id="imageFile" type="file" name="imageFile" accept="image/png, image/jpeg" />
+       
+    </div>
+    <div>
+        Select cover picture:
+        <input id="coverFile" type="file" name="coverFile" accept="image/png, image/jpeg" />
+       
+    </div>
+</fieldset>
+<button type="button" name="Save" onclick="submit()" class="btn btn-default btn-xs">Save Changes</button>
+<script>
+    function submit (e){
+        e.preventDefault = true;
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(e) {
+            if ( 4 == this.readyState ) {
+                console.log(['xhr upload complete', e]);
+            }
+        };
+        xhr.open('post', '/Admin/ImageUpload/testupload2', true);
+        xhr.setRequestHeader("Content-Type","multipart/form-data");
+        var formData = new FormData();
+        formData.append("imageFile", $("#imageFile").files[0]);
+        formData.append("coverFile", $("#coverFile").files[0]);
+        // etc
+        xhr.send(formData);
+    }
+</script>

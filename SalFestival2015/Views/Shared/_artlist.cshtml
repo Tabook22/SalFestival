@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SalFestival2015.Models.tbl_articles>
+
+@{
+    Layout = "";
+    var grid = new WebGrid(source:Model, canPage: true, rowsPerPage: 10, canSort: true, ajaxUpdateContainerId: "nasser");
+
+}
+
+
+    @using (Html.BeginForm("DeleteArticles", "SiteSettings", FormMethod.Post))
+    {
+        <input type="submit" value="حذف المقالات" class="btn btn-default" />
+        @grid.GetHtml(htmlAttributes: new { id = "nasser" },
+                                    tableStyle: "table table-condense",
+                                    columns:
+                                    grid.Columns(
+                                    grid.Column(format: @<text><input type="checkbox" name="ids" value="@item.id" /> </text>, header: ""),
+                                    grid.Column("a_order", "الترتيب"),
+                                    grid.Column("a_title", "عنوان المقالة / الخبر"),
+                                    grid.Column("a_date", "التاريخ", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.a_date)),
+                                    grid.Column(format:@<text>@Ajax.ActionLink("تعديل", "editart", "SiteSettings", new { id = @item.id }, new AjaxOptions
+                                                                                                                         {
+                                                                                                                             HttpMethod = "GET",
+                                                                                                                             UpdateTargetId = "sitesections",
+                                                                                                                             InsertionMode = InsertionMode.Replace
+                                                                                                                         })</text>, header: "تعديل")
+                                                                                                                                                                                                                                                     )
+                                                                                                                                                                                                                                         )
+
+    }

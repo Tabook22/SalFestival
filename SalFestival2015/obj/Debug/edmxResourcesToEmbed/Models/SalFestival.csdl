@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="salalahDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="cusInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cus_title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="cus_address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="cus_office_tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="cus_home_tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="cus_mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="cus_email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="cus_img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cus_business_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cus_notice" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="locs" Relationship="Self.FK_loc_cusInfo" FromRole="cusInfo" ToRole="loc" />
+  </EntityType>
+  <EntityType Name="loc">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="clat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="clog" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="zoom" Type="Int32" />
+    <Property Name="width" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="height" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="cusId" Type="Int32" />
+    <Property Name="display" Type="Int32" />
+    <NavigationProperty Name="cusInfo" Relationship="Self.FK_loc_cusInfo" FromRole="loc" ToRole="cusInfo" />
+    <NavigationProperty Name="loc_markes" Relationship="Self.FK_loc_markes_locid" FromRole="loc" ToRole="loc_markes" />
+  </EntityType>
+  <EntityType Name="loc_markes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="locId" Type="Int32" />
+    <Property Name="lat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="log" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="desc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="display" Type="Int32" />
+    <NavigationProperty Name="loc" Relationship="Self.FK_loc_markes_locid" FromRole="loc_markes" ToRole="loc" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tbl_adv_cats">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adv_cat_title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="adv_cat_img" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="adv_cat_desc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="adv_cat_lnk" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="type" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="display" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_cats">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cat_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cat_summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="cat_show" Type="Boolean" />
+    <Property Name="cat_order" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_gust_Answers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="g_date" Type="DateTime" Precision="3" />
+    <Property Name="g_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="g_email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="g_tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="q_no" Type="Int32" />
+    <Property Name="q_ans" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_Images">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImgName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ImgDir" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ImgPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_mainnews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Npost_pid" Type="Int32" />
+    <Property Name="Npost_catid" Type="Int32" />
+    <Property Name="Npost_order" Type="Int32" />
+    <Property Name="Npost_type" Type="Int32" />
+    <Property Name="Npost_postion" Type="Int32" />
+    <Property Name="Npost_TabLoc" Type="Int32" />
+    <Property Name="Npost_show" Type="Int32" />
+    <Property Name="Npost_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_menu">
+    <Key>
+      <PropertyRef Name="menu_item_id" />
+    </Key>
+    <Property Name="menu_item_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="menu_item_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="menu_item_link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="menu_item_target" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="parent_item_id" Type="Int32" />
+    <Property Name="menu_item_order" Type="Int32" />
+    <Property Name="lang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_posts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="post_auid" Type="Int32" />
+    <Property Name="post_title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="post_date" Type="DateTime" Precision="3" />
+    <Property Name="year" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="month" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="post_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="post_excerpt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="post_catid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="post_modified" Type="DateTime" Precision="3" />
+    <Property Name="post_status" Type="Int32" />
+    <Property Name="post_parent" Type="Int32" />
+    <Property Name="post_menu_order" Type="Int32" />
+    <Property Name="post_img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="post_price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_quize">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="q_date" Type="DateTime" Precision="3" />
+    <Property Name="q_no" Type="Int32" />
+    <Property Name="q_question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="q_ans1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="q_ans2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="q_ans3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="q_ans4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="q_corr" Type="Int32" />
+    <Property Name="q_img" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="q_img_show" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_Rss">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="datepublished" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_websettings_cats">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cat_id" Type="Int32" />
+    <Property Name="post_no" Type="Int32" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_winners">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="g_date" Type="DateTime" Precision="3" />
+    <Property Name="g_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="g_email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="g_tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="q_no" Type="Int32" />
+    <Property Name="q_ans" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_contact">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GDate" Type="DateTime" Precision="3" />
+    <Property Name="GName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="GAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="GEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GSubject" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="GData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cdate" Type="DateTime" Precision="3" />
+    <Property Name="mdate" Type="DateTime" Precision="3" />
+    <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="un" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ps" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_loc_cusInfo">
+    <End Role="cusInfo" Type="Self.cusInfo" Multiplicity="0..1" />
+    <End Role="loc" Type="Self.loc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cusInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="loc">
+        <PropertyRef Name="cusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_loc_markes_locid">
+    <End Role="loc" Type="Self.loc" Multiplicity="0..1" />
+    <End Role="loc_markes" Type="Self.loc_markes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loc">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="loc_markes">
+        <PropertyRef Name="locId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="salalahDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cusInfoes" EntityType="Self.cusInfo" />
+    <EntitySet Name="locs" EntityType="Self.loc" />
+    <EntitySet Name="loc_markes" EntityType="Self.loc_markes" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="tbl_adv_cats" EntityType="Self.tbl_adv_cats" />
+    <EntitySet Name="tbl_cats" EntityType="Self.tbl_cats" />
+    <EntitySet Name="tbl_gust_Answers" EntityType="Self.tbl_gust_Answers" />
+    <EntitySet Name="tbl_Images" EntityType="Self.tbl_Images" />
+    <EntitySet Name="tbl_mainnews" EntityType="Self.tbl_mainnews" />
+    <EntitySet Name="tbl_menu" EntityType="Self.tbl_menu" />
+    <EntitySet Name="tbl_posts" EntityType="Self.tbl_posts" />
+    <EntitySet Name="tbl_quize" EntityType="Self.tbl_quize" />
+    <EntitySet Name="tbl_Rss" EntityType="Self.tbl_Rss" />
+    <EntitySet Name="tbl_websettings_cats" EntityType="Self.tbl_websettings_cats" />
+    <EntitySet Name="tbl_winners" EntityType="Self.tbl_winners" />
+    <EntitySet Name="tbl_contact" EntityType="Self.tbl_contact" />
+    <EntitySet Name="tbl_users" EntityType="Self.tbl_users" />
+    <AssociationSet Name="FK_loc_cusInfo" Association="Self.FK_loc_cusInfo">
+      <End Role="cusInfo" EntitySet="cusInfoes" />
+      <End Role="loc" EntitySet="locs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_loc_markes_locid" Association="Self.FK_loc_markes_locid">
+      <End Role="loc" EntitySet="locs" />
+      <End Role="loc_markes" EntitySet="loc_markes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,74 @@
+﻿ ul.listwinner {
+        margin: 0;
+        padding: 0;
+    }
+
+        ul.listwinner li {
+            background-image: url("Images/check.png");
+            background-position: right center;
+            background-repeat: no-repeat;
+            padding: 10px 30px 10px 10px;
+        }
+
+            ul.listwinner li span {
+                color: Red;
+                font-weight: bold;
+            }
+
+    .quize {
+        background: none repeat scroll 0 0;
+        border: 1px solid white;
+        margin: 5px;
+        padding: 5px;
+    }
+
+        .quize p {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 25px;
+            margin: 10px;
+            padding: 10px;
+            text-align: right;
+        }
+
+        .quize #quize_img {
+            margin: 5px auto;
+            width: 500px;
+        }
+
+            .quize #quize_img img {
+                background-color: white;
+                padding: 2px;
+            }
+
+        .quize ul li h3 {
+            font-size: 18px;
+            padding: 5px;
+        }
+
+        .quize td {
+            font-size: 11px;
+            font-weight: bold;
+            padding: 5px;
+        }
+
+    #quize-spoonsers {
+    }
+
+    ul#cond {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+        ul#cond li {
+            border-bottom: 1px solid #c1c1c1;
+        }
+
+            ul#cond li:last-child {
+                border-bottom: none;
+            }
+    .badge {
+        margin-left:10px;
+        background-color:#BC3232;
+        color:#fff;
+    }

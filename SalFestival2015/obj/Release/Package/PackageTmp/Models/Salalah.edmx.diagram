@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="86a74daa95664dbd93683d4fd8a24484" Name="Diagram1">
+        <EntityTypeShape EntityType="salalahDBModel.cusInfo" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="salalahDBModel.loc" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="salalahDBModel.loc_markes" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="salalahDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_adv_cats" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_cats" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_gust_Answers" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_Images" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_mainnews" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_menu" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_quize" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_Rss" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_websettings_cats" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_winners" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="salalahDBModel.FK_loc_cusInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="salalahDBModel.FK_loc_markes_locid" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_articles" Width="1.5" PointX="3.75" PointY="11.75" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_contact" Width="1.5" PointX="5.75" PointY="11.75" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_images1" Width="1.5" PointX="11.75" PointY="11.75" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_mainsections" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_siteSections" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_users" Width="1.5" PointX="12.75" PointY="3.75" />
+        <EntityTypeShape EntityType="salalahDBModel.tbl_posts" Width="1.5" PointX="8.375" PointY="11.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

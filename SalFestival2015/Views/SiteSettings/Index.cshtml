@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SalFestival2015.Models.tbl_articles>
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<h2>قائمة المقالات/الأخبار</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="con-md-12">
+
+
+            <table class="table table-responsive">
+                <tr>
+                    <th>م</th>
+                    <th>العنوان</th>
+                    <th>تاريخ الإضافة</th>
+                    <th>موقع المقالة / الخبر</th>
+                    <th>الحالة</th>
+                </tr>
+                <!-- here we are goiong to to make auto increment serial no.-->
+                @foreach (var item in Model.Select((x, i) => new { Data = x, Index = i }))
+            {
+                    <tr>
+                        <td>@(item.Index + 1)</td>
+                        <td>@Html.DisplayFor(m => item.Data.a_title)</td>
+                        <td>@String.Format("{0:d}", item.Data.a_date)</td>
+                        <td>@Html.DisplayFor(m=> item.Data.a_loc)</td>
+                        <td>
+                            @switch (item.Data.a_status)
+                            {
+                                case "0":
+                                    <span style="color:red; font-weight:bold;">مسودة</span>
+                                    break;
+                                case "1":
+                                <span style="color:green; font-weight:bold;">نشطة</span>
+                                    break;
+                            }
+                        </td>
+                    </tr>
+             }
+            </table>
+        </div>
+    </div>
+</div>

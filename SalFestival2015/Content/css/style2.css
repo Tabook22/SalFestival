@@ -1,0 +1,53 @@
+﻿
+.artimg {
+    padding-right: 320px;
+}
+
+.templatemo_servicetxt {
+    width: 300px;
+}
+
+.artimg .aimg {
+    padding-top: 50px;
+    width: 200px;
+    height: 350px;
+}
+
+.mart {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.templatemo_servicetxt h2 {
+    color: #11560D;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.m1 {
+}
+
+.m2 {
+}
+
+.m3 {
+    margin-top: 25px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+.eventtable {
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    background-color: rgb(178,12,12);
+}
+
+    .eventtable a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+        .eventtable a:hover {
+            color: #ccc;
+        }

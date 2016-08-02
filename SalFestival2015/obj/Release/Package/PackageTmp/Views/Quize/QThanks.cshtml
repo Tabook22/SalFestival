@@ -1,0 +1,36 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "سؤال المسابقة اليومي";
+}
+
+<style>
+    .cthanks {
+        height: 500px;
+        padding-top: 100px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+    }
+</style>
+<div class="row">
+    <div class="container">
+        <div class="col-sm-12">
+            <div class="cthanks">
+
+                <img src="~/Content/images/Dm_Logo.png" style="width:200px;" />
+                <p>
+                    شكراً على مشاركتكم و زيارتكم الموقع
+                </p>
+                <div class="backhome" style="padding-top:50px;">
+
+                    <a href='@Url.Action("Index","Home")'>
+                        >>عودة للصفحة الرئيسية<<
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

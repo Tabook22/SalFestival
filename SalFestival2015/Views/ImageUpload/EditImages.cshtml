@@ -1,0 +1,386 @@
+﻿@model SalFestival2015.Models.tbl_images1
+
+@{
+    Layout = "";
+}
+<style>
+    .txtco {
+       
+    }
+    .white-panel p{border:1px solid #ccc;text-align:left;padding:5px;
+font-weight:bold;font-size:11px;
+}
+</style>
+
+
+<div class="row">
+    <div class="col-sm-12">
+
+        <article class="white-panel">
+            <img src=@Model.imgfullurl class=" img-responsive" alt="" />
+            <h4><a href=@Model.imglink target="_blank">@Model.imgtitle</a></h4>
+            <p class="small">
+                @*@ViewBag.Desc*@
+                <span>http://www.salalahfestival.gov.om</span><span>@Model.imgfullurl</span>
+            </p>
+        </article>
+    </div>
+    <div class="col-md-6">
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-prinamry">
+            <div class="panel-header"></div>
+            <div class="pandel-body">
+                @*@using (Ajax.BeginForm("EditImages", "ImageUpload", new AjaxOptions() { HttpMethod = "POST" }, new { id = "formEditlImg", enctype = "multipart/form-data" }))*@
+                @using (@Html.BeginForm("EditImages", "ImageUpload", new { id = ViewBag.imgId }, FormMethod.Post, new { id = "formEditlImg", enctype = "multipart/form-data", @class = "jqtransform" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(x => x.imgfullurl)
+                    @Html.HiddenFor(x => x.imgurl_lg)
+                    @Html.HiddenFor(x => x.imgfolder)
+                    <div>
+                        <div class="form-group">
+                            <label>عنوان</label>
+                            @Html.TextBoxFor(x => x.imgtitle, new { placehoder = "عنوان الصورة", @Class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label>وصف الصورة</label>
+                            @Html.TextAreaFor(x => x.imgdesc, new { placehoder = "وصف الصورة", @Class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <lable>
+                                رابط الصورة (إختياري)
+                            </lable>
+                            @Html.TextBoxFor(x => x.imglink, new { placeholder = "رابط الصورة", @class = "form-control  txtco" })
+                        </div>
+                        <div class="form-group" style="border:1px solid #eee;padding:10px;">
+                            <fieldset>
+                                <legend>تحميل الصورة</legend>
+                                <input type="file" id="fileToUpload" name="file" />
+                                <span class="field-validation-error" id="spanfile"></span>
+                            </fieldset>
+                        </div>
+                        <button type="submit" id="btnUploadAdd" class="btn btn-danger">حفظ بيانات الصورة</button>
+                    </div>
+                }
+            </div>
+
+        </div>
+        <div class="progress progress-striped">
+            <div class="progress-bar progress-bar-success">0%</div>
+        </div>
+
+        <div id="status"></div>
+    </div>
+</div>
+@**********************************************************************Modal************************************************************************************@
+<script type="text/javascript">
+    $(function () {
+
+        //var bar = $('.progress-bar');
+        //var percent = $('.progress-bar');
+        //var status = $('#status');
+
+        //$('form').ajaxForm({
+        //    beforeSend: function () {
+        //        status.empty();
+        //        var percentVal = '0%';
+        //        bar.width(percentVal)
+        //        percent.html(percentVal);
+        //    },
+        //    uploadProgress: function (event, position, total, percentComplete) {
+        //        var percentVal = percentComplete + '%';
+        //        bar.width(percentVal)
+        //        percent.html(percentVal);
+        //    },
+        //    success: function () {
+        //        var percentVal = '100%';
+        //        bar.width(percentVal)
+        //        percent.html(percentVal);
+        //    },
+        //    complete: function (xhr) {
+        //        status.html(xhr.responseText);
+        //    }
+
+
+
+            //$("#formEditlImg").on("submit", function (e) {
+            //    e.preventDefault();
+            //    $("#imgdetails").html(' ');//clear the div content
+            //    var formData = new FormData($('#formEditlImg')[0]);
+            //    $.ajax({
+            //        url: this.action,
+            //        type: this.method,
+            //        data: formData, //$(this).serialize(),
+            //        success: function (result) {
+
+            //            $('#imgdetails').html(result);
+            //        },
+            //        error:function (xhr, status) {
+            //            alert(status);
+            //        }
+            //    });
+
+                //$("#btnUploadAdd").click(function () {
+                //    alert("الحمد لله رب العالمين");
+                //    var formData = new FormData($('#frmUplaodFileAdd')[0]);
+                //    $.ajax({
+                //        url: '/Admin/ImageUpload/UploadFile',  //Server script to process data
+                //        type: 'POST',
+                //        xhr: function () {  // Custom XMLHttpRequest
+                //            var myXhr = $.ajaxSettings.xhr();
+                //            if (myXhr.upload) { // Check if upload property exists
+                //                myXhr.upload.addEventListener('progress',
+                //                progressHandlingFunction, false); // For handling the progress of the upload
+                //            }
+                //            return myXhr;
+                //        },
+                //        data: formData,
+                //        //Options to tell jQuery not to process data or worry about content-type.
+                //        cache: false,
+                //        contentType: false,
+                //        processData: false
+                //    });
+                //});
+
+        //$("#formEditlImg").on("submit", function (e) {
+           
+        //    var fld = $("#imgfolder").val();
+        //    alert("الحمد لله رب العالمين");
+        //    $.ajax({
+        //        url: '/Admin/ImageUpload/dsImages',
+        //        contentType: 'application/html; charset=utf-8',
+        //        data: { imgfolder: fld },
+        //        type: 'GET',
+        //        dataType: 'html'
+
+        //    })
+        //    .success(function (result) {
+        //        $('#imgdetails').html(result);
+        //        alert("أستغفر الله");
+        //    })
+        //    .error(function (xhr, status) {
+        //        alert(status);
+        //    })
+           
+        });
+    });
+</script>
+
+<style>
+    .modal-content {
+        width: 600px !important;
+        margin: 30px auto !important;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        // Initialize numeric spinner input boxes
+        //$(".numeric-spinner").spinedit();
+        // Initialize modal dialog
+        // attach modal-container bootstrap attributes to links with .modal-link class.
+        // when a link is clicked with these attributes, bootstrap will display the href content in a modal dialog.
+        $('body').on('click', '.modal-link', function (e) {
+            e.preventDefault();
+            $(this).attr('data-target', '#modal-container');
+            $(this).attr('data-toggle', 'modal');
+        });
+        $('body').on('click', '.modal-link2', function (e) {
+            e.preventDefault();
+            $(this).attr('data-target', '#modal-container2');
+            $(this).attr('data-toggle', 'modal');
+
+        });
+        // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+        $('body').on('click', '.modal-close-btn', function () {
+            $('#modal-container').modal('hide');
+        });
+        //clear modal cache, so that new content can be loaded
+        $('#modal-container').on('hidden.bs.modal', function () {
+            $(this).removeData('bs.modal');
+        });
+        // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+        $('body').on('click', '.modal-close-btn', function () {
+            $('#modal-container2').modal('hide');
+        });
+        //clear modal cache, so that new content can be loaded
+        $('#modal-container2').on('hidden.bs.modal', function () {
+            $(this).removeData('bs.modal');
+        });
+        $('#CancelModal').on('click', function () {
+            return false;
+        });
+
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $('#approve-btn').click(function () {
+            $('#modal-container2').modal('hide');
+        });
+
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $(".deleteButton").click(function () {
+            if (confirm('Are you sure you wish to delete this item?')) {
+                $.post($(this).attr("href"));
+            }
+        });
+    });</script>
+
+<div id="modal-container" class="modal fade"
+     tabindex="-1" role="dialog">
+    <div class="modal-content">
+    </div>
+</div>
+
+
+<div id="modal-container2" class="modal fade"
+     tabindex="-1" role="dialog">
+    <div class="modal-content">
+
+    </div>
+</div>
+
+
+@section myStyle{
+    <style>
+        .imghw {
+            width: 50px;
+            font-weight: bold;
+        }
+
+        .white-panel {
+            position: absolute;
+            background: white;
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+        }
+            /*
+                        stylize any heading tags withing white-panel below
+                        */
+
+            .white-panel h1 {
+                font-size: 1em;
+            }
+
+                .white-panel h1 a {
+                    color: #A92733;
+                }
+
+            .white-panel:hover {
+                box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+                margin-top: -5px;
+                -webkit-transition: all 0.3s ease-in-out;
+                -moz-transition: all 0.3s ease-in-out;
+                -o-transition: all 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
+            }
+    </style>
+}
+@*Validating the file on client side*@
+@section Scripts{
+    <script type="text/jscript">
+        //get file size
+        function GetFileSize(fileid) {
+            try {
+                var fileSize = 0;
+                //for IE
+                if ($.browser.msie) {
+                    //before making an object of ActiveXObject,
+                    //please make sure ActiveX is enabled in your IE browser
+                    var objFSO = new ActiveXObject("Scripting.FileSystemObject"); var filePath = $("#" + fileid)[0].value;
+                    var objFile = objFSO.getFile(filePath);
+                    var fileSize = objFile.size; //size in kb
+                    fileSize = fileSize / 1048576; //size in mb
+                }
+                    //for FF, Safari, Opeara and Others
+                else {
+                    fileSize = $("#" + fileid)[0].files[0].size //size in kb
+                    fileSize = fileSize / 1048576; //size in mb
+                }
+
+                // alert("Uploaded File Size is" + fileSize + "MB");
+                return fileSize;
+            }
+            catch (e) {
+                alert("Error is :" + e);
+            }
+        }
+
+        //get file path from client system
+        function getNameFromPath(strFilepath) {
+
+            var objRE = new RegExp(/([^\/\\]+)$/);
+            var strName = objRE.exec(strFilepath);
+
+            if (strName == null) {
+                return null;
+            }
+            else {
+                return strName[0];
+            }
+
+        }
+
+        $("#btnSubmit").live("click", function () {
+
+            if ($('#fileToUpload').val() == "") {
+                $("#spanfile").html("Please upload file");
+                return false;
+            }
+            else {
+                return checkfile();
+            }
+        });
+
+        function checkfile() {
+            var file = getNameFromPath($("#fileToUpload").val());
+            if (file != null) {
+                var extension = file.substr((file.lastIndexOf('.') + 1));
+                //  alert(extension);
+                switch (extension) {
+                    case 'jpg':
+                    case 'png':
+                    case 'gif':
+                    case 'pdf':
+                        flag = true;
+                        break;
+                    default:
+                        flag = false;
+                }
+            }
+            if (flag == false) {
+                $("#spanfile").text("You can upload only jpg,png,gif,pdf extension file");
+                return false;
+
+            }
+            else {
+                var size = GetFileSize('fileToUpload');
+                if (size > 3) {
+                    $("#spanfile").text("You can upload file up to 3 MB");
+                    return false;
+                }
+                else {
+                    $("#spanfile").text("");
+                }
+            }
+        }
+        $(function () {
+            $("#fileToUpload").change(function () {
+                checkfile();
+            });
+
+        });
+
+    </script>
+}
+
+
+
+

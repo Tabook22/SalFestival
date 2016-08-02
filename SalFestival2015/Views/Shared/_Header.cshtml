@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "_Header";
+    Layout = "";
+}
+@using Microsoft.AspNet.Identity
+<!-- NAVIGATION MENU -->
+<div class="navbar-nav navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @*@Html.ActionLink("صفحةالتحكم الرئيسية", "Index", "Home", new { area = "Admin" }, new { @class = "navbar-brand" })*@
+            <a class="navbar-brand" href='@Url.Action("Index","Admin")'><img src='@Url.Content("~/Content/images/golden1.png")' width="30" alt=""> صفحةالتحكم الرئيسية</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href='@Url.Action("index","Admin")'><i class="icon-home icon-white"></i> الرئيسية</a></li>
+                @*<li><a href="tables.html"><i class="icon-th icon-white"></i> الإعدادات</a></li>
+                    <li><a href='@Url.Action("UploadImages","imageUpload")'><i class="icon-lock icon-white"></i> الصور</a></li>
+                    <li><a href='@Url.Action("create", "posts")'><i class="icon-user icon-white"></i>المقالات</a></li>*@
+            </ul>
+           <ul>
+               <li>
+                   @{
+                       if (Request.IsAuthenticated)
+                       {
+                           using (Html.BeginForm("Logout", "MyAccount", FormMethod.Post, new { id = "logoutForm" }))
+                           {
+                               <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+                           }
+                       }
+                       else
+                       {
+                           @Html.ActionLink("Login", "Login", "MyAccount")
+                       }
+                   }
+               </li>
+           </ul>
+
+        </div><!--/.nav-collapse -->
+    </div>
+</div>

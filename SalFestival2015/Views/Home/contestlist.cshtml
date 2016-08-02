@@ -1,0 +1,34 @@
+﻿@model IEnumerable<SalFestival2015.Models.cstapp>
+@{
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+@{ 
+    int cst = 0;
+}
+<div class="row">
+    <div class="container">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <tr>
+                    <th></th>
+                    <th>الإسم</th>
+                    <th>البطاقة الشخصية</th>
+                    <th>المحافظة</th>
+                    <th>الهاتف</th>
+                    <th>المسابقة</th>
+                </tr>
+                @foreach (var itm in Model)
+                {
+                    <tr>
+                        <td>(@cst+1)</td>
+                        <td>@itm.Name</td>
+                        <td>@itm.IdNo</td>
+                        <td>@itm.State</td>
+                        <td>@itm.Tel</td>
+                        <td>@itm.Contest</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

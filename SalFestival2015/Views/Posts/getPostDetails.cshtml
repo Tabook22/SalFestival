@@ -1,0 +1,142 @@
+﻿@model SalFestival2015.Models.tbl_posts
+
+@{
+    ViewBag.Title = "تفاصيل المقالة / الخبر";
+}
+
+@*<div class="row">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="artimg">
+                    <h2>@Model.post_title</h2>
+                    <img src='@Model.post_img' alt='@Model.post_title'>
+                </div>
+                <div class="artdesc">
+
+                        @Html.Raw(Model.post_content)
+
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+<style>
+    .panel {
+        position: relative;
+    }
+
+    .panel-default > .panel-leftheading {
+        color: #333;
+        background-color: #f5f5f5;
+        border-color: #ddd;
+    }
+
+    .panel-primary > .panel-leftheading {
+        color: #fff;
+        background-color: #428bca;
+        border-color: #428bca;
+    }
+
+    .panel-success > .panel-leftheading {
+        color: #3c763d;
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+    }
+
+    .panel-info > .panel-leftheading {
+        color: #31708f;
+        background-color: #d9edf7;
+        border-color: #bce8f1;
+    }
+
+    .panel-warning > .panel-leftheading {
+        color: #8a6d3b;
+        background-color: #fcf8e3;
+        border-color: #faebcc;
+    }
+
+    .panel-danger > .panel-leftheading {
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+    }
+
+    .panel-leftheading {
+        width: 42px;
+        padding: 10px 15px;
+        border-right: 1px solid transparent;
+        border-bottom: 1px solid transparent;
+        border-top-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        float: right;
+        height: 100%;
+        position: absolute;
+    }
+
+    .panel-lefttitle {
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-right: 15px;
+        font-size: 16px;
+        color: inherit;
+        -webkit-transform: rotate(90deg);
+        -webkit-transform-origin: right top;
+        r top;
+        -moz-transform: rotate(90deg);
+        -moz-transform-origin: right top;
+        -ms-transform: rotate(90deg);
+        -ms-transform-origin: right top;
+        r top;
+        -o-transform: rotate(90deg);
+        -o-transform-origin: right top;
+        transform: rotate(90deg);
+        transform-origin: right top;
+        position: absolute;
+        white-space: nowrap;
+    }
+
+    .panel-rightbody {
+        float: right;
+        margin-right: 45px;
+        padding: 15px;
+    }
+
+    .artimg img {
+        padding: 2px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        margin: 20px;
+    }
+
+    #getpost {
+        margin-top: 110px;
+    }
+</style>
+<div class="container">
+
+    <div id="getpost" class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-success">
+                <div class="panel-leftheading">
+                    <h3 class="panel-lefttitle"></h3>
+                </div>
+                <div class="panel-rightbody">
+                    <div class="artimg">
+                        <h2>@Model.post_title</h2>
+                        <img src='@Model.post_img' alt='@Model.post_title'>
+                    </div>
+                    <div class="artdesc">
+                        @Html.Raw(Model.post_content)
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="clearfix">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

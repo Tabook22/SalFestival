@@ -1,0 +1,56 @@
+﻿@model IEnumerable<SalFestival2015.Models.tbl_articles>
+@{
+    Layout = "";
+}
+
+<link href="~/Content/css/mainArt.css" rel="stylesheet" />
+@*<hr>
+<div class="container">
+
+    <div class="row row-margin-bottom">
+        @{Html.RenderAction("gettopAdv");}
+        <div class="col-md-1"></div>
+        @{Html.RenderAction("dailyevents");}
+    </div>
+</div>*@
+
+
+<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+    <div class="container">
+        
+        @foreach (var item in Model)
+        {
+            <div class="row panel">
+
+                <div class="col-md-4 bg_blur " style="background-image: url('@Url.Content(item.a_img)');">
+
+                    @*<a href="#" class="follow_btn hidden-xs">Follow</a>*@
+                </div>
+                <div class="col-md-8  col-xs-12" dir="rtl">
+                    <img src="~/Content/images/salogo.jpg" class="img-thumbnail picture hidden-xs" />
+                    <img src="~/Content/images/salogo.jpg" class="img-thumbnail visible-xs picture_mob" />
+                    <div class="header">
+
+                        <h4>@item.a_title</h4>
+                        <span>
+                            @item.a_desc
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        }
+       
+    </div>
+
+
+    @*<div class="row nav">
+            <div class="col-md-4"></div>
+            <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px;">
+                <div class="col-md-4 col-xs-4 well"><i class="fa fa-weixin fa-lg"></i> 16</div>
+                <div class="col-md-4 col-xs-4 well"><i class="fa fa-heart-o fa-lg"></i> 14</div>
+                <div class="col-md-4 col-xs-4 well"><i class="fa fa-thumbs-o-up fa-lg"></i> 26</div>
+            </div>
+        </div>*@
+</div>
+

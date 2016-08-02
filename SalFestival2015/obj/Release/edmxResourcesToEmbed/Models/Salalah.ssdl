@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="salalahDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cusInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cus_title" Type="nvarchar" MaxLength="200" />
+    <Property Name="cus_address" Type="nvarchar" MaxLength="300" />
+    <Property Name="cus_office_tel" Type="nvarchar" MaxLength="20" />
+    <Property Name="cus_home_tel" Type="nvarchar" MaxLength="20" />
+    <Property Name="cus_mobile" Type="nvarchar" MaxLength="20" />
+    <Property Name="cus_email" Type="nvarchar" MaxLength="200" />
+    <Property Name="cus_img" Type="nvarchar" MaxLength="50" />
+    <Property Name="cus_business_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="cus_notice" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="loc">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="clat" Type="nvarchar" MaxLength="10" />
+    <Property Name="clog" Type="nvarchar" MaxLength="10" />
+    <Property Name="zoom" Type="int" />
+    <Property Name="width" Type="nvarchar" MaxLength="6" />
+    <Property Name="height" Type="nvarchar" MaxLength="6" />
+    <Property Name="cusId" Type="int" />
+    <Property Name="display" Type="int" />
+  </EntityType>
+  <EntityType Name="loc_markes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="locId" Type="int" />
+    <Property Name="lat" Type="nvarchar" MaxLength="10" />
+    <Property Name="log" Type="nvarchar" MaxLength="10" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="desc" Type="nvarchar" MaxLength="200" />
+    <Property Name="display" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tbl_adv_cats">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="adv_cat_title" Type="nvarchar" MaxLength="200" />
+    <Property Name="adv_cat_img" Type="nvarchar" MaxLength="100" />
+    <Property Name="adv_cat_desc" Type="nvarchar" MaxLength="200" />
+    <Property Name="adv_cat_lnk" Type="nvarchar" MaxLength="100" />
+    <Property Name="type" Type="nvarchar" MaxLength="2" />
+    <Property Name="display" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_cats">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cat_desc" Type="nvarchar" MaxLength="50" />
+    <Property Name="cat_summary" Type="nvarchar(max)" />
+    <Property Name="cat_show" Type="bit" />
+    <Property Name="cat_order" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_gust_Answers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="g_date" Type="datetime" />
+    <Property Name="g_name" Type="nvarchar" MaxLength="200" />
+    <Property Name="g_email" Type="nvarchar" MaxLength="200" />
+    <Property Name="g_tel" Type="nvarchar" MaxLength="50" />
+    <Property Name="q_no" Type="int" />
+    <Property Name="q_ans" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Images">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImgName" Type="nvarchar" MaxLength="200" />
+    <Property Name="ImgDir" Type="nvarchar" MaxLength="50" />
+    <Property Name="ImgPath" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="tbl_mainnews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Npost_pid" Type="int" />
+    <Property Name="Npost_catid" Type="int" />
+    <Property Name="Npost_order" Type="int" />
+    <Property Name="Npost_type" Type="int" />
+    <Property Name="Npost_postion" Type="int" />
+    <Property Name="Npost_TabLoc" Type="int" />
+    <Property Name="Npost_show" Type="int" />
+    <Property Name="Npost_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_menu">
+    <Key>
+      <PropertyRef Name="menu_item_id" />
+    </Key>
+    <Property Name="menu_item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="menu_item_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="menu_item_link" Type="nvarchar" MaxLength="200" />
+    <Property Name="menu_item_target" Type="nvarchar" MaxLength="50" />
+    <Property Name="parent_item_id" Type="int" />
+    <Property Name="menu_item_order" Type="int" />
+    <Property Name="lang" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_quize">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="q_date" Type="datetime" />
+    <Property Name="q_no" Type="int" />
+    <Property Name="q_question" Type="nvarchar(max)" />
+    <Property Name="q_ans1" Type="nvarchar" MaxLength="100" />
+    <Property Name="q_ans2" Type="nvarchar" MaxLength="100" />
+    <Property Name="q_ans3" Type="nvarchar" MaxLength="100" />
+    <Property Name="q_ans4" Type="nvarchar" MaxLength="100" />
+    <Property Name="q_corr" Type="int" />
+    <Property Name="q_img" Type="nvarchar" MaxLength="200" />
+    <Property Name="q_img_show" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Rss">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="256" />
+    <Property Name="author" Type="nvarchar" MaxLength="50" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="datepublished" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_websettings_cats">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cat_id" Type="int" />
+    <Property Name="post_no" Type="int" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_winners">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="g_date" Type="datetime" />
+    <Property Name="g_name" Type="nvarchar" MaxLength="200" />
+    <Property Name="g_email" Type="nvarchar" MaxLength="200" />
+    <Property Name="g_tel" Type="nvarchar" MaxLength="50" />
+    <Property Name="q_no" Type="int" />
+    <Property Name="q_ans" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_articles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="a_date" Type="datetime" />
+    <Property Name="a_title" Type="nvarchar" MaxLength="200" />
+    <Property Name="a_source" Type="nvarchar" MaxLength="200" />
+    <Property Name="a_desc" Type="ntext" />
+    <Property Name="a_link" Type="nvarchar" MaxLength="200" />
+    <Property Name="a_img" Type="nvarchar" MaxLength="200" />
+    <Property Name="a_type" Type="nvarchar" MaxLength="100" />
+    <Property Name="a_mediatype" Type="nvarchar" MaxLength="100" />
+    <Property Name="a_mediatype_link" Type="nvarchar" MaxLength="100" />
+    <Property Name="a_order" Type="int" />
+    <Property Name="a_loc" Type="nvarchar" MaxLength="50" />
+    <Property Name="a_status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_contact">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GDate" Type="datetime" />
+    <Property Name="GName" Type="nvarchar" MaxLength="200" />
+    <Property Name="GAddress" Type="nvarchar" MaxLength="500" />
+    <Property Name="GEmail" Type="nvarchar" MaxLength="100" />
+    <Property Name="GSubject" Type="nvarchar" MaxLength="200" />
+    <Property Name="GData" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tbl_images1">
+    <Key>
+      <PropertyRef Name="imgid" />
+    </Key>
+    <Property Name="imgid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="imgfolder" Type="nvarchar" MaxLength="50" />
+    <Property Name="imgurl_lg" Type="nvarchar" MaxLength="200" />
+    <Property Name="imgurl_sm" Type="nvarchar" MaxLength="200" />
+    <Property Name="imgurl_th" Type="nvarchar" MaxLength="200" />
+    <Property Name="imgfullurl" Type="nvarchar" MaxLength="300" />
+    <Property Name="imgtitle" Type="nvarchar" MaxLength="300" />
+    <Property Name="imgdesc" Type="ntext" />
+    <Property Name="imgpid" Type="int" />
+    <Property Name="imglink" Type="nvarchar" MaxLength="100" />
+    <Property Name="imgrole" Type="nvarchar" MaxLength="50" />
+    <Property Name="imgyear" Type="nvarchar" MaxLength="4" />
+    <Property Name="imgdate" Type="datetime" />
+    <Property Name="imgshow" Type="int" />
+    <Property Name="imgw" Type="nvarchar" MaxLength="10" />
+    <Property Name="imgh" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tbl_mainsections">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="secdesc" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="tbl_posts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="post_auid" Type="int" />
+    <Property Name="post_title" Type="nvarchar" MaxLength="200" />
+    <Property Name="post_date" Type="datetime" />
+    <Property Name="year" Type="nvarchar" MaxLength="50" />
+    <Property Name="month" Type="nvarchar" MaxLength="50" />
+    <Property Name="post_content" Type="nvarchar(max)" />
+    <Property Name="post_excerpt" Type="nvarchar(max)" />
+    <Property Name="post_catid" Type="nvarchar" MaxLength="100" />
+    <Property Name="post_modified" Type="datetime" />
+    <Property Name="post_status" Type="int" />
+    <Property Name="post_parent" Type="int" />
+    <Property Name="post_menu_order" Type="int" />
+    <Property Name="post_img" Type="nvarchar" MaxLength="200" />
+    <Property Name="post_price" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tbl_siteSections">
+    <Key>
+      <PropertyRef Name="secId" />
+    </Key>
+    <Property Name="secId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sec_title" Type="nvarchar" MaxLength="50" />
+    <Property Name="sec_lock" Type="nvarchar" MaxLength="50" />
+    <Property Name="sec_desc" Type="ntext" />
+    <Property Name="sec_status" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cdate" Type="datetime" />
+    <Property Name="mdate" Type="datetime" />
+    <Property Name="fname" Type="nvarchar" MaxLength="50" />
+    <Property Name="lname" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" />
+    <Property Name="un" Type="nvarchar" MaxLength="50" />
+    <Property Name="ps" Type="nvarchar" MaxLength="100" />
+    <Property Name="role" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_loc_cusInfo">
+    <End Role="cusInfo" Type="Self.cusInfo" Multiplicity="0..1" />
+    <End Role="loc" Type="Self.loc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cusInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="loc">
+        <PropertyRef Name="cusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_loc_markes_locid">
+    <End Role="loc" Type="Self.loc" Multiplicity="0..1" />
+    <End Role="loc_markes" Type="Self.loc_markes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loc">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="loc_markes">
+        <PropertyRef Name="locId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="salalahDBModelStoreContainer">
+    <EntitySet Name="cusInfo" EntityType="Self.cusInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="loc" EntityType="Self.loc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="loc_markes" EntityType="Self.loc_markes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_adv_cats" EntityType="Self.tbl_adv_cats" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_cats" EntityType="Self.tbl_cats" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_gust_Answers" EntityType="Self.tbl_gust_Answers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Images" EntityType="Self.tbl_Images" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_mainnews" EntityType="Self.tbl_mainnews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_menu" EntityType="Self.tbl_menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_quize" EntityType="Self.tbl_quize" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Rss" EntityType="Self.tbl_Rss" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_websettings_cats" EntityType="Self.tbl_websettings_cats" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_winners" EntityType="Self.tbl_winners" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_articles" EntityType="Self.tbl_articles" Schema="nasser" store:Type="Tables" />
+    <EntitySet Name="tbl_contact" EntityType="Self.tbl_contact" Schema="nasser" store:Type="Tables" />
+    <EntitySet Name="tbl_images1" EntityType="Self.tbl_images1" Schema="nasser" store:Type="Tables" />
+    <EntitySet Name="tbl_mainsections" EntityType="Self.tbl_mainsections" Schema="nasser" store:Type="Tables" />
+    <EntitySet Name="tbl_posts" EntityType="Self.tbl_posts" Schema="nasser" store:Type="Tables" />
+    <EntitySet Name="tbl_siteSections" EntityType="Self.tbl_siteSections" Schema="nasser" store:Type="Tables" />
+    <EntitySet Name="tbl_users" EntityType="Self.tbl_users" Schema="nasser" store:Type="Tables" />
+    <AssociationSet Name="FK_loc_cusInfo" Association="Self.FK_loc_cusInfo">
+      <End Role="cusInfo" EntitySet="cusInfo" />
+      <End Role="loc" EntitySet="loc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_loc_markes_locid" Association="Self.FK_loc_markes_locid">
+      <End Role="loc" EntitySet="loc" />
+      <End Role="loc_markes" EntitySet="loc_markes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

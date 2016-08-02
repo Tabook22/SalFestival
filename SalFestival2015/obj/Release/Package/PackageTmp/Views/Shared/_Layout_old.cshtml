@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="ar-om" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - مهرجان صلالة السياحي</title>
+    @*@Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/myCSS")
+    @Scripts.Render("~/bundles/modernizr")*@
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/css/animate.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/templatemo_misc.css" rel="stylesheet" />
+    <link href="~/Content/css/templatemo_style.css" rel="stylesheet" />
+    <link href="~/Content/css/mainarticles.css" rel="stylesheet" />
+
+
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <script>
+    function showhide()
+    {
+    	var div = document.getElementById("newpost");
+		if (div.style.display !== "none")
+		{
+			div.style.display = "none";
+		}
+		else {
+			div.style.display = "block";
+		}
+    }
+    </script>
+    <meta name="description" content="The description of my page" />
+</head>
+<body>
+    
+    <div class="container body-content">
+      
+        <div id="menu-container">
+            @RenderBody()
+            <!-- team start -->
+
+        </div>
+        <!-- contact end -->
+        <!-- footer start -->
+        <div class="templatemo_footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 col-sm-12">Copyright &copy; 2015 مهرجان صلالة السياحي</div>
+
+                </div>
+            </div>
+        </div>
+        <!-- footer end -->
+
+
+        <!-- *******************************************************************************************************************  -->
+
+        @*<hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - مهرجان صلالة السياحي</p>
+        </footer>*@
+    </div>
+
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/myJS")*@
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    <script src="~/Content/js/jquery.lightbox.js"></script>
+    <script src="~/Content/js/templatemo_custom.js"></script>
+
+    <script>
+    $('.gallery_more').click(function () {
+        var $this = $(this);
+        $this.toggleClass('gallery_more');
+        if ($this.hasClass('gallery_more')) {
+            $this.text('Load More');
+        } else {
+            $this.text('Load Less');
+        }
+    });
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

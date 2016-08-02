@@ -1,0 +1,76 @@
+﻿@model IEnumerable<SalFestival2015.Models.tbl_articles>
+
+@{
+    Layout = "";
+}
+
+<style>
+    .hexagon-in3 {
+        background-position: 50% center;
+        background-repeat: no-repeat;
+        background-size: 125% auto;
+        height: 100%;
+        overflow: hidden;
+        transform: rotate(0deg);
+        transition: all 0.5s ease 0s;
+        visibility: visible;
+        width: 100%;
+    }
+
+    .mm{margin-top:180px;}
+</style>
+<!-- gallery start -->
+<div class="content homepage" id="menu-1">
+    <div class="container">
+        <div class="row templatemorow">
+            <ul class="lstimg" style="padding:0;margin:0; list-style:none;">
+                @foreach (var item in Model)
+                {
+                    <li class="hex col-sm-6">
+                        <div>
+                            <div class="hexagon hexagon2 gallery-item">
+                                <div class="hexagon-in1">
+                                    <div class="hexagon-in2" style="background-image: url('@Url.Content(item.a_img)');">
+
+                                        <div class="overlay">
+                                            <a href='@Url.Content(@item.a_img)' data-rel="lightbox" class="fa fa-expand"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                }
+
+            </ul>
+
+                    </div>
+                </div>
+                
+  
+                        <div class="templatemo_loadmore">
+                           
+                        </div>
+                   
+            </div>
+            <!-- gallery end -->
+
+<script>
+    $(".lstimg li").each(function () {
+        var str = $(this).index();
+        if (str==5)
+        {
+            $(this).addClass("hex col-sm-6 hex-offset templatemo-hex-top1 templatemo-hex-top2");
+        }
+ 
+        if (str > 5 && str <= 8) {
+                $(this).addClass("hex col-sm-6 templatemo-hex-top1  templatemo-hex-top3");
+            
+        }
+       
+        if (str > 8 && str <= 13) {
+            $(this).addClass("hex col-sm-6 mm");
+
+        }
+    });
+</script>

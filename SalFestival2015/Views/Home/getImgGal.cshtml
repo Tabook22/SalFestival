@@ -1,0 +1,139 @@
+﻿@model IEnumerable<SalFestival2015.Models.tbl_articles>
+@{
+    ViewBag.Title = "getImgGal";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>معرض الصور لمهرجان صلالة السياحي 2015</h2>
+<style>
+    .artimg {
+        padding-right: 320px;
+    }
+
+    .templatemo_servicetxt {
+        width: 300px;
+    }
+
+    .artimg .aimg {
+        padding-top: 50px;
+        width: 200px;
+        height: 350px;
+    }
+
+    .mart {
+        background-color: rgba(0, 0, 0, .5);
+    }
+
+    .templatemo_servicetxt h2 {
+        color: #11560D;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+    }
+
+    .m1 {
+    }
+
+    .m2 {
+    }
+
+    .m3 {
+        margin-top: -90px;
+        background-color: #fff;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .eventtable {
+        font-size: 16px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        margin-top: 10px;
+        background-color: rgb(178,12,12);
+    }
+
+        .eventtable a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+            .eventtable a:hover {
+                color: #ccc;
+            }
+</style>
+<style>
+    .hexagon-in3 {
+        background-position: 50% center;
+        background-repeat: no-repeat;
+        background-size: 125% auto;
+        height: 100%;
+        overflow: hidden;
+        transform: rotate(0deg);
+        transition: all 0.5s ease 0s;
+        visibility: visible;
+        width: 100%;
+    }
+
+    .mm {
+        margin-top: 180px;
+    }
+
+</style>
+<!-- gallery start -->
+<div class="content homepage" id="menu-1">
+    <div class="container">
+        <div class="row templatemorow">
+            <ul class="lstimg" style="padding:0;margin:0; list-style:none;">
+                @foreach (var item in Model)
+                {
+                    <li class="hex col-sm-6">
+                        <div>
+                            <div class="hexagon hexagon2 gallery-item">
+                                <div class="hexagon-in1">
+                                    <div class="hexagon-in2" style="background-image: url('@Url.Content(item.a_img)');">
+
+                                        <div class="overlay">
+                                            <a href='@Url.Content(@item.a_img)' data-rel="lightbox" class="fa fa-expand"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                }
+
+            </ul>
+
+        </div>
+    </div>
+
+
+    <div class="templatemo_loadmore">
+
+    </div>
+
+</div>
+<!-- gallery end -->
+
+<script>
+    $(".lstimg li").each(function () {
+        var str = $(this).index();
+        if (str==5)
+        {
+            $(this).addClass("hex col-sm-6 hex-offset templatemo-hex-top1 templatemo-hex-top2");
+        }
+
+        if (str > 5 && str <= 8) {
+                $(this).addClass("hex col-sm-6 templatemo-hex-top1  templatemo-hex-top3");
+
+        }
+
+        if (str > 8 && str <= 13) {
+            $(this).addClass("hex col-sm-6 mm");
+
+        }
+    });
+</script>
+<script>
+    $(".hexagon-in2").css({
+        "background-size": "350px 300px"
+    });
+</script>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<visitors>
+  <visitor>
+    <id>1</id>
+    <date>25/7/2015</date>
+    <name>Nasser</name>
+    <email>nmtabook@gmail.com</email>
+    <tel>99701496</tel>
+    <qno>1</qno>
+    <ans>1</ans>
+  </visitor>
+</visitors>

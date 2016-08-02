@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<SalFestival2015.Models.tbl_gust_Answers>
+
+@{
+    Layout = "~/Views/Shared/_layoutAdmin.cshtml";
+    ViewBag.Title = "قائمة الفائزين";
+}
+
+@using PagedList.Mvc; @*import this so we get our HTML Helper*@
+@using PagedList; @*//import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)*@
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<style>
+    ul.pstlst {
+        list-style: none;
+    }
+
+        ul.pstlst li {
+            padding: 5px 0;
+        }
+
+    .spg {
+        width: 600px;
+    }
+
+    span.psttitle {
+        display: inline-block;
+        border-bottom: 1px solid #ccc;
+        width: 80%;
+    }
+
+    .qesno {
+        position: absolute;
+        background-color: #9B0707;
+        right: -50px;
+    }
+</style>
+
+<h2>مسابقة الموقع اليومية</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                @Html.ActionLink("إختيار ثلاثة فائزين عشوائاً", "radomwinners", "DailyWinners", new {qno=@ViewBag.Q1, qans= @ViewBag.Q2 },null)
+            </div>
+            <div class="form-horizontal">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        قائمة الفائزين بالسؤال اليومي
+                    </div>
+                    <div class="panel-body">
+                        <ul class="pstlst">
+                            @foreach (var item in ViewBag.GetWinners)
+                            {
+                                <li style="position:relative;">
+                                    <span class="badge qesno">@item.q_no</span>
+                                    <span class="psttitle">
+                                        @item.g_name
+                                    </span>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="spg" dir="ltr">
+    <!-- output a paging control that lets the user navigation to the previous page, next page, etc -->
+    @Html.PagedListPager((IPagedList)ViewBag.GetWinners, page => Url.Action("addWinner", new { page = page, q1 = @ViewBag.Q1, q2 = ViewBag.Q2 }))
+    @*@Html.PagedListPager((IPagedList)ViewBag.OnePageOfPosts, page => Url.Action("Index", new { page }))*@
+</div>

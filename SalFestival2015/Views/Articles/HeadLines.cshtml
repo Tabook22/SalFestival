@@ -1,0 +1,34 @@
+﻿@model IEnumerable<SalFestival2015.Models.tbl_articles>
+@{
+    Layout = "";
+}
+
+    <div id="myHeadLineCarousel" class="carousel slide">
+        <div class="carousel-inner hlcarousel-inner">
+            @foreach (var item in Model)
+            {
+                <div class="item">
+                    <div class="img-container">
+                        <a href="#"><img class="img-responsive" src='@Url.Content(@item.a_img )' alt="Slide1"></a>
+                    </div>
+                   
+                    <div class="caption">
+                        <h4>
+                            <a href='@item.a_link'>
+                                @item.a_title
+                            </a>
+                        </h4>
+                        <p>@item.a_desc</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            @for (var orderIndex = 0; orderIndex < ViewBag.getTotalNo; orderIndex++)
+            {
+                <li data-target="#myHeadLineCarousel" data-slide-to=orderIndex></li>
+            }
+        </ol>
+    </div><!-- End Carousel -->
+

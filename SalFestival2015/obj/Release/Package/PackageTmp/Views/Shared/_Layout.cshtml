@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<html lang="ar-om" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - مهرجان صلالة السياحي</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/templatemo_misc.css" rel="stylesheet" />
+    <link href="~/Content/css/templatemo_style.css" rel="stylesheet" />
+
+    <link href="~/Content/css/mainarticles.css" rel="stylesheet" />
+    <link href="~/Content/css/sidemenu.css" rel="stylesheet" />
+    <link href="~/Content/css/newsslider.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        ul.advlst {
+            list-style: none;
+        }
+
+            ul.advlst li {
+                padding: 5px;
+                margin-bottom: 20px;
+            }
+
+                ul.advlst li img {
+                    width: 200px;
+                    height: 100%;
+                }
+    </style>
+
+    <script>
+        function showhide() {
+            var div = document.getElementById("newpost");
+            if (div.style.display !== "none") {
+                div.style.display = "none";
+            }
+            else {
+                div.style.display = "block";
+            }
+        }
+    </script>
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/tinymce/tiny_mce.js"></script>
+
+    <!--this is for the post content-->
+    <!-- Script to wire up your TinyMCE editor -->
+    <script type="text/javascript">
+        tinyMCE.init({
+            mode: "specific_textareas",
+            editor_selector: "pstcontent",
+            // Location of TinyMCE script
+            script_url: '@Url.Content("~/Scripts/tinymce/tiny_mce.js")',
+            theme: "advanced",
+            height: "500",
+            width: "790",
+            verify_html: false,
+            plugins: "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,wordcount,advlist,autosave",
+
+            // Theme options
+            theme_advanced_buttons1: "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
+            theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+            theme_advanced_buttons3: "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+            theme_advanced_buttons4: "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak,restoredraft,codehighlighting,netadvimage",
+            theme_advanced_toolbar_location: "top",
+            theme_advanced_toolbar_align: "left",
+            theme_advanced_statusbar_location: "bottom",
+            theme_advanced_resizing: false,
+
+            // Example content CSS (should be your site CSS)
+            content_css: "@Url.Content("~/Scripts/tinymce/css/content.css")",
+            convert_urls: false,
+
+            // Drop lists for link/image/media/template dialogs
+            template_external_list_url: "lists/template_list.js",
+            external_link_list_url: "lists/link_list.js",
+            external_image_list_url: "lists/image_list.js",
+            media_external_list_url: "lists/media_list.js",
+            directionality: "rtl"
+        });
+    </script>
+
+
+    <!-- this is for the post summary -->
+    <script type="text/javascript">
+        tinyMCE.init({
+            mode: "specific_textareas",
+            editor_selector: "pstsummary",
+            theme: "advanced",
+            theme_advanced_buttons1: "mybutton,bold,italic,underline,separator,strikethrough,justifyleft,justifycenter,justifyright, justifyfull,bullist,numlist,undo,redo,link,unlink",
+            theme_advanced_buttons2: "",
+            theme_advanced_buttons3: "",
+            theme_advanced_toolbar_location: "top",
+            theme_advanced_toolbar_align: "left",
+            theme_advanced_statusbar_location: "bottom",
+            plugins: 'inlinepopups',
+            directionality: "rtl"
+        });
+    </script>
+
+
+    <!----start-top-nav-script---->
+    <script>
+        $(function () {
+            var pull = $('#pull');
+            menu = $('.top-nav ul');
+            menuHeight = menu.height();
+            $(pull).on('click', function (e) {
+                e.preventDefault();
+                menu.slideToggle();
+            });
+            $(window).resize(function () {
+                var w = $(window).width();
+                if (w > 320 && menu.is(':hidden')) {
+                    menu.removeAttr('style');
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+
+    @*<div class="container body-content">*@
+
+    <div class="site-header navbar-fixed-top">
+        <div class="main-navigation">
+            <div class="responsive_menu">
+                @*<ul>
+                        <li><a class="show-1 templatemo_home" href="#">Gallery</a></li>
+                        <li><a class="show-2 templatemo_page2" href="#">Our team</a></li>
+                        <li><a class="show-3 templatemo_page3" href="#">Services</a></li>
+                        <li><a class="show-5 templatemo_page5" href="#">Contact</a></li>
+                    </ul>*@
+            </div>
+            <div class="container">
+                <div class="row templatemo_gallerygap">
+                    <div class="col-md-12 responsive-menu">
+                        <a href="#" class="menu-toggle-btn">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div> <!-- /.col-md-12 -->
+                    <div class="col-md-10 main_menu">
+                        @*<ul>
+                                <li>
+                                    <a class="show-1 templatemo_home" href="#">
+                                        <span class="fa fa-camera"></span>
+                                        Gallery
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="show-2 templatemo_page2" href="#">
+                                        <span class="fa fa-users"></span>
+                                        Our team
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="show-3 templatemo_page3" href="#">
+                                        <span class="fa fa-cogs"></span>
+                                        Services
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="show-5 templatemo_page5" href="#">
+                                        <span class="fa fa-envelope"></span>
+                                        Contact
+                                    </a>
+                                </li>
+                            </ul>*@
+                        <img id="sitetitle" src="~/Content/images/sitetitle2.png" class="img-responsive" />
+                    </div> <!-- /.col-md-12 -->
+                    <div class="col-md-2 col-sm-12" style="text-align:right;">
+                        <a href="#">
+                            <img class="slogo" src="~/Content/images/logo.png" style="width:100px;" alt="Polygon HTML5 Template">
+                        </a>
+                    </div>
+
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.main-navigation -->
+    </div> <!-- /.site-header -->
+    <div id="menu-container" class="wrapper">
+        <!--Side menu-->
+        <div class="sidemenu-bar ">
+            <ul>
+                <li>
+
+                    <img src="~/Content/images/oman.png" />
+
+                </li>
+                <li>
+                    <a href='@Url.Action("DisplayQuize", "Quize")'>
+                        <img src="~/Content/images/quize3.jpg" />
+                    </a>
+                </li>
+                @* <li><a href="#">أرقام تهمك</a></li>
+                    <li><a href="#">روابط مهمة</a></li>
+                    <li><a href="#">مسابقة الموقع</a></li>*@
+                @*<li>
+                        <img class="advc" src="~/Content/images/adv1.jpg" />
+                    </li>
+                    <li>
+                        <img class="advc" src="~/Content/images/adv2.jpg" />
+                    </li>*@
+            </ul>
+
+            @{Html.RenderAction("getSideAdv", "Home");}
+
+        </div>
+        <!-- end of side menu-->
+        @RenderBody()
+
+
+    </div>
+    @{Html.RenderAction("Index", "Sponsers");}
+    <!-- footer start -->
+    <div class="templatemo_footer footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-12">Copyright &copy; 2015 مهرجان صلالة السياحي</div>
+                <div class="col-md-3 col-sm-12 templatemo_rfooter">
+
+                    <a href="http://www.facebook.com/DhofarMunicipality">
+                        <div class="hex_footer">
+                            <span class="fa fa-facebook"></span>
+                        </div>
+                    </a>
+                    <a href="https://twitter.com/DhofarMun">
+                        <div class="hex_footer">
+                            <span class="fa fa-twitter"></span>
+                        </div>
+                    </a>
+                    <a href="http://www.youtube.com/DhofarMunicipality">
+                        <div class="hex_footer">
+                            <span class="fa fa-youtube"></span>
+                        </div>
+                    </a>
+                    <a href="mailto:webteam@dm.gov.om">
+                        <div class="hex_footer">
+                            <span class="fa fa-envelope-o"></span>
+                        </div>
+                    </a>
+                    <a href="http://www.instagram.com/Dhofar_Municipality">
+                        <div class="hex_footer">
+                            <span class="fa fa-instagram"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer end -->
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/respond.js"></script>
+    <script src="~/Content/js/jquery.lightbox.js"></script>
+
+    <script src="~/Content/js/templatemo_custom.js"></script>
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @*@Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/myJS")*@
+
+
+    <!-- photo gallery-->
+    <script>
+        $('.gallery_more').click(function () {
+            var $this = $(this);
+            $this.toggleClass('gallery_more');
+            if ($this.hasClass('gallery_more')) {
+                $this.text('▼المزيد');
+            } else {
+                $this.text('▲ أعلى');
+            }
+        });
+    </script>
+
+    <!--side menu-->
+    <script>
+        $(document).ready(function () {
+            $(".sidemenu-bar").toggleClass("open");
+            $(".menu-button").click(function () {
+                $(".sidemenu-bar").toggleClass("open");
+            })
+        })
+    </script>
+
+    <!-- Head Lines -->
+    <script>
+    $('#myHeadLineCarousel').carousel({
+        interval: 4000
+    });
+
+    $("#myHeadLineCarousel .item").eq(0).addClass("active");
+    $("#myHeadLineCarousel .carousel-indicators").eq(0).addClass("active");
+    </script>
+
+
+
+    <script src="~/Content/js/script.js"></script>
+    <script src="~/Content/js/jquery.flexisel.js"></script>
+    <script src="~/Content/js/maincontents.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

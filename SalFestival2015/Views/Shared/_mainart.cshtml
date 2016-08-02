@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SalFestival2015.Models.tbl_articles>
+@{
+    Layout = "";
+}
+
+<link href="~/Content/css/mainArt.css" rel="stylesheet" />
+
+<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+    <div class="" style="padding:10px;">
+        
+        @foreach (var item in Model)
+        {
+            <div class="row panel">
+
+                <div class="col-md-4 bg_blur " style="background-image: url('@Url.Content(item.a_img)');">
+
+                    @*<a href="#" class="follow_btn hidden-xs">Follow</a>*@
+                </div>
+                <div class="col-md-8  col-xs-12" dir="rtl">
+                    <img src="~/Content/images/salogo.jpg" class="img-thumbnail picture visible-md  visible-lg" />
+                    @*<img src="~/Content/images/salogo.jpg" class="img-thumbnail visible-xs picture_mob" />*@
+                    <div class="header">
+
+                        <h4>@item.a_title</h4>
+                        <span class="hidden-xs hidden-sm">
+                            @item.a_desc
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        }
+       
+    </div>
+</div>
+

@@ -1,0 +1,94 @@
+﻿@model IEnumerable<SalFestival2015.Models.tbl_articles>
+@{
+    Layout = "";
+}
+
+<style>
+    #advContainer img{width:565px;}
+</style>
+<div class="siteAdv">
+    <ul class="advlst">
+        @foreach (var item in Model)
+        {
+            <li>
+             <img src='@Url.Content(item.a_img)' class="sidadvlnk" data-advid='@item.Id' data-toggle="modal" data-target="#myModal" />
+            </li>
+        }
+        </ul>
+    @*<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+       <div id='advModal' class='modal hide fade in'>
+        <div id='advContainer'>
+        </div>
+    </div>*@
+    
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">إعلانات المهرجان</h4>
+                </div>
+                <div class="modal-body">
+                    <div id='advContainer'>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @*@Ajax.ActionLink("EMPLOYEE", "GetPlist", "PostList", new AjaxOptions() { UpdateTargetId = "TabBody" }, new { @class = "btn" })*@
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">خروج</button>
+                    @*<button type="button" class="btn btn-primary">Save changes</button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.sidadvlnk').on("click",function (e) {
+            var param = $(this).data('advid');
+                var url = '@Url.Action("GetPostData","Home")' + '?id=' + param;
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: '',
+                    dataType: 'html',
+                    success: function (data) {
+                        $('#advContainer').html(data);
+                        $('#advModal').modal('show');
+                    },
+                    error: function () {
+                        alert('Error!');
+                    }
+                });
+        });
+    });
+
+
+
+    @*$(document).ready(function () {
+        $('.sidadvlnk').click(function (e) {
+            $(this).each(function () {
+                var param = $('.sidadvlnk').data('advid');
+                var url = '@Url.Action("GetPostData","Home")' + '?id=' + param;
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: '',
+                    dataType: 'html',
+                    success: function (data) {
+                        $('#advContainer').html(data);
+                        $('#advModal').modal('show');
+                    },
+                    error: function () {
+                        alert('Error!');
+                    }
+                });
+
+            });
+
+        });
+    });*@
+</script>
